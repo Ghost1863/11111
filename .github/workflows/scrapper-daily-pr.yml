@@ -28,13 +28,15 @@ jobs:
 
       - name: Enable Corepack and set Yarn version
         run: |
+          npm install -g corepack
           corepack enable
           corepack prepare yarn@4.9.2 --activate
-          yarn --version  # Проверяем, что версия правильная
+          which yarn
+          yarn --version
 
       - name: Install scraper dependencies
         working-directory: packages/scrapper
-        run: yarn install --immutable
+        run: corepack yarn install --immutable
 
       - name: Run scraper
         working-directory: packages/scrapper
