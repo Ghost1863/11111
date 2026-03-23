@@ -19,13 +19,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-          cache: yarn
-          cache-dependency-path: packages/scrapper/yarn.lock
-
       - name: Enable Corepack and set Yarn version
         run: |
           npm install -g corepack
@@ -33,6 +26,13 @@ jobs:
           corepack prepare yarn@4.9.2 --activate
           which yarn
           yarn --version
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: yarn
+          cache-dependency-path: packages/scrapper/yarn.lock
 
       - name: Install scraper dependencies
         working-directory: packages/scrapper
