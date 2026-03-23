@@ -1,0 +1,85 @@
+@import 'tailwindcss';
+@config "../../tailwind.config.js";
+
+.dark {
+  --border-base: #323235;
+  --button-inverted: rgba(255, 255, 255, 1);
+  --contrast-fg-primary: rgba(0, 0, 0, 0.88);
+}
+
+:root {
+  --buttons-accent: 0 0.75px 0 0 rgba(255, 255, 255, 0.20) inset, 0 1px 2px 0 rgba(0, 0, 0, 0.40), 0 0 0 1px rgba(135, 86, 51, 0.50);
+}
+
+@layer utilities {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 500;
+  }
+
+  body {
+    letter-spacing: -0.045em;
+  }
+}
+
+@keyframes collapsibleDown {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-collapsible-content-height);
+    opacity: 1;
+  }
+}
+
+@keyframes collapsibleUp {
+  from {
+    height: var(--radix-collapsible-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes slide-bg {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
+
+.bg-pattern {
+  background-image: url('/pattern.svg');
+}
+
+.dark {
+  .bg-pattern {
+    background-image: url('/pattern-dark.svg');
+  }
+}
+
+.animate-slide-bg {
+  animation: slide-bg 150s linear infinite;
+  background-repeat: repeat-x;
+}
+
+.animate-collapsible-down {
+  animation: collapsibleDown 300ms cubic-bezier(0.87, 0, 0.13, 1) forwards;
+}
+
+.animate-collapsible-up {
+  animation: collapsibleUp 300ms cubic-bezier(0.87, 0, 0.13, 1) forwards;
+}
+
+.max-w-content {
+  max-width: 1280px;
+}

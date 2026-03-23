@@ -1,0 +1,186 @@
+{
+  "HomePage": {
+    "metadata": {
+      "title": "Gorgo - Your simple path limitless Medusa commerce",
+      "description": "Medusa integrations, plugins, extensions, community channels, and expert support to build e-commerce."
+    },
+    "heroTitle1": "Build e-commerce",
+    "heroTitle2": "on Medusa",
+    "heroTitle3": "faster",
+    "heroTitle4": "with Gorgo",
+    "heroSubtitle1": "Integration plugins,",
+    "heroSubtitle2": "extensions, and expert",
+    "heroSubtitle3": "community support",
+    "heroSubtitle4": "— everything you need to grow your commerce.",
+    "browsePlugins": "Browse plugins",
+    "browsePluginsSubtitle": "All Medusa extensions",
+    "readDocsSubtitle": "Integrations by Gorgo",
+    "readDocs": "Read docs"
+  },
+  "Navigation": {
+    "next": "Next",
+    "back": "Back",
+    "close": "Close",
+    "menu": "Menu",
+    "medusa-plugins": "Integrations & plugins",
+    "community": "Community",
+    "contact-us": "Chat with us",
+    "docs": "Documentation"
+  },
+  "Header": {
+    "docsButton": "Docs"
+  },
+  "Footer": {
+    "title": "Your simple path to limitless Medusa commerce",
+    "menuResourses": "Resourses",
+    "menuGorgo": "Contact us",
+    "about1": "Gorgo reduces the cost of adapting Medusa to local markets.",
+    "about2": "We develop integration plugins, support developers, and foster the Medusa Dev community on Telegram."
+  },
+  "Links": {
+    "gorgoTitle": "Gorgo",
+    "gorgoSubtitle": "Your simple path to limitless Medusa commerce.",
+    "plugins": "Medusa\nintegrations & plugins",
+    "pluginsDescription": "Discover all community and official extensions.",
+    "communitySupport": "Community on Telegram",
+    "communitySupportDescription": "Get the latest news, instant help, and advice from active Medusa developers.",
+    "browsePlugins": "Browse plugins",
+    "items": {
+      "medusaChat": {
+        "title": "Medusa Chat",
+        "menuTitle": "Medusa Chat on Telegram",
+        "description": "Chat with fellow coders and vibecoders on Medusa.",
+        "url": "https://t.me/medusajs_chat",
+        "visualUrl": "@medusajs_chat",
+        "button": "Join the Telegram chat"
+      },
+      "medusaNews": {
+        "title": "Medusa News",
+        "menuTitle": "Medusa News Telegram channel",
+        "description": "Be the first to know about news and updates.",
+        "url": "https://t.me/medusajs_news",
+        "visualUrl": "@medusajs_news",
+        "button": "Join the Telegram channel"
+      }
+    },
+    "docs": {
+      "title": "Documentation",
+      "subtitle": "Integration plugins for Medusa by Gorgo.",
+      "button": "Read docs"
+    }
+  },
+  "AboutPage": {
+    "metadata": {
+      "title": "About Gorgo - Join the Medusa open-source community",
+      "description": "Join Gorgo and help build the largest open-source ecommerce platform in the world"
+    },
+    "title1": "Medusa gives flexibility.",
+    "title2": "Gorgo helps you move faster.",
+    "description1": "We believe e-commerce developers deserve a better DX, and businesses should move beyond legacy and proprietary solutions. Medusa opens a new path to flexible, modern commerce — and at Gorgo, we make that path simpler and more accessible.",
+    "contactTitle": "Сontact us",
+    "contactTelegram": "– chat with us on Telegram",
+    "contactEmail": "– or email us"
+  },
+  "MedusaPluginsPage": {
+    "metadata": {
+      "title": "Medusa Integrations and Plugins - Browse all community and official extensions",
+      "description": "Discover all community and official Medusa plugins, extensions, and integrations to extend your e-commerce stack with payments, shipping, ERP, and more."
+    },
+    "title": "Medusa\nIntegrations & Plugins",
+    "subtitle": "Browse all community and official plugins, extensions,\nand integrations for Medusa",
+    "searchPlaceholder": "Search plugins...",
+    "allCategories": "All categories",
+    "allAuthors": "All authors",
+    "filterPlugins": "Filter Plugins",
+    "clear": "Clear",
+    "selectCategory": "Select category",
+    "authors": "Authors",
+    "communitySupport": "Support Channels",
+    "noPlugins": "No plugins found",
+    "byAuthor": "By"
+  },
+  "MedusaPluginsDetailPage": {
+    "goBack": "Medusa plugins",
+    "category": "Category",
+    "builtBy": "Built by",
+    "version": "Version",
+    "lastUpdated": "Last updated",
+    "githubStars": "Github stars",
+    "monthlyDownloads": "Monthly downloads",
+    "npm": "NPM",
+    "github": "Github",
+    "telegram": "Telegram",
+    "discord": "Discord",
+    "docs": "Documentation",
+    "moreInThisCategory": "More in this category",
+    "moreByThisAuthor": "More by this author",
+    "viewAll": "View all",
+    "needSupport": "Need customizations for this plugin?",
+    "getInTouch": "Get in touch",
+    "medusa": "Medusa",
+    "plugins": "Plugins"
+  },
+  "FaqTipsPage": {
+    "metadata": {
+      "title": "Guides - FAQ Tips and Helpful Blogs for Medusa Developers",
+      "description": "Find answers to common questions and read helpful blogs for Medusa developers"
+    },
+    "title": "Guides",
+    "subtitle": "Helpful blogs for developers"
+  },
+  "ContactSection": {
+    "title": "Need help building an integration Medusa plugin?",
+    "browsePlugins": "Browse plugins",
+    "getInTouch": "Chat witn us"
+  },
+  "Medusa": {
+    "card": {
+      "buy": "Buy",
+      "byAuthor": "By"
+    },
+    "hero": {
+      "searchPlaceholder": "Search...",
+      "discover": {
+        "tab": "Discover",
+        "title": "Discover",
+        "subtitle": "Explore a wide range of plugins to enhance your Medusa store"
+      },
+      "plugins": {
+        "tab": "Plugins",
+        "title": "Medusa Plugins",
+        "subtitle": "Browse all community and official plugins, extensions, and integrations for Medusa"
+      }
+    },
+    "sort": {
+      "medusa": "Medusa",
+      "plugins": "Plugins",
+      "orderBy": "Order by",
+      "defaultSort": "Default",
+      "nameAscSort": "Name A-Z",
+      "nameDescSort": "Name Z-A",
+      "starsSort": "GitHub Stars",
+      "downloadsSort": "NPM Downloads",
+      "clearSort": "Clear sort",
+      "githubSort": "Github stars",
+      "npmSort": "NPM downloads",
+      "ascending": "Ascending",
+      "descending": "Descending"
+    },
+    "filter": {
+      "title": "Filters",
+      "clear": "Clear",
+      "authors": "Authors",
+      "categories": "Categories",
+      "allCategories": "All categories",
+      "author": {
+        "community": "Community"
+      },
+      "communities": "Support & Community",
+      "community": {
+        "telegram": "Telegram",
+        "discord": "Discord",
+        "documentation": "Documentation"
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "plugin-scraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/scrapper.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/scrapper.js"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "npm-registry-fetch": "^13.0.1"
+  },
+  "packageManager": "yarn@4.9.2"
+}

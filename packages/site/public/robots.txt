@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://gorgojs.com
+
+# Sitemaps
+Sitemap: https://gorgojs.com/sitemap.xml

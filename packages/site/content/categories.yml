@@ -1,0 +1,32 @@
+- id: other
+  name:
+    en: Other
+    ru: Другое
+- id: cms
+  name:
+    en: CMS
+    ru: CMS
+- id: notification
+  name:
+    en: Notifications
+    ru: Уведомления
+- id: payment
+  name:
+    en: Payments
+    ru: Платежи
+- id: analytics
+  name:
+    en: Analytics
+    ru: Аналитика
+- id: search
+  name:
+    en: Search
+    ru: Поиск
+- id: auth
+  name:
+    en: Auth
+    ru: Авторизация
+- id: shipping
+  name:
+    en: Shipping
+    ru: Доставка

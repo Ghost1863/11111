@@ -1,0 +1,1558 @@
+- slug: rokmohar-medusa-plugin-meilisearch
+  name:
+    en:
+      label: MeiliSearch
+      shortDescription: Open-source search engine for your storefront
+      description: Open-source search engine for your storefront
+    ru:
+      label: MeiliSearch
+      shortDescription: Open-source поисковый движок для вашей витрины
+      description: Open-source поисковый движок для вашей витрины
+  category: search
+  author: rokmohar
+  npm: '@rokmohar/medusa-plugin-meilisearch'
+  repository: https://github.com/rokmohar/medusa-plugin-meilisearch
+  lastPublish: '2026-01-26T12:41:33.964Z'
+  active: true
+- slug: lambdacurry-medusa-payment-braintree
+  name:
+    en:
+      label: Braintree
+      shortDescription: Support payments and 3D Secure via Braintree
+      description: Support payments and 3D Secure via Braintree
+    ru:
+      label: Braintree
+      shortDescription: Поддержка платежей и 3D Secure через Braintree
+      description: Поддержка платежей и 3D Secure через Braintree
+  category: payment
+  author: lambdacurry
+  npm: '@lambdacurry/medusa-payment-braintree'
+  repository: https://github.com/lambda-curry/medusa-plugins
+  lastPublish: '2026-01-16T22:57:45.006Z'
+  active: true
+- slug: webbers-pay-payments-medusa
+  name:
+    en:
+      label: Pay.
+      shortDescription: Accept credit cards, digital and buy now pay later
+      description: Accept credit cards, digital and buy now pay later
+    ru:
+      label: Pay.
+      shortDescription: Принимайте кредитные карты, цифровые платежи и купи сейчас — плати потом
+      description: Принимайте кредитные карты, цифровые платежи и купи сейчас — плати потом
+  category: payment
+  author: webbers
+  npm: '@webbers/pay-payments-medusa'
+  repository: https://github.com/webbersagency/pay-payments-medusa
+  lastPublish: '2026-02-10T10:35:29.459Z'
+  active: true
+- slug: perseidesjs-notification-nodemailer
+  name:
+    en:
+      label: Nodemailer
+      shortDescription: Send email notifications using Nodemailer (SMTP)
+      description: Send email notifications using Nodemailer (SMTP)
+    ru:
+      label: Nodemailer
+      shortDescription: Отправляйте email-уведомления через Nodemailer (SMTP)
+      description: Отправляйте email-уведомления через Nodemailer (SMTP)
+  category: notification
+  author: perseidesjs
+  npm: '@perseidesjs/notification-nodemailer'
+  lastPublish: '2026-01-27T13:56:11.695Z'
+  active: true
+- slug: devx-commerce-plugin-gati
+  name:
+    en:
+      label: Gati
+      shortDescription: Sync Medusa with Gati ERP
+      description: Sync Medusa with Gati ERP
+    ru:
+      label: Gati
+      shortDescription: Синхронизируйте Medusa с Gati ERP
+      description: Синхронизируйте Medusa с Gati ERP
+  category: other
+  author: devx-commerce
+  npm: '@devx-commerce/plugin-gati'
+  lastPublish: '2025-12-24T09:47:52.429Z'
+  active: true
+- slug: lambdacurry-medusa-product-reviews
+  name:
+    en:
+      label: Product Reviews
+      shortDescription: Add ratings, reviews, and moderation to products
+      description: Add ratings, reviews, and moderation to products
+    ru:
+      label: Product Reviews
+      shortDescription: Добавляйте рейтинги, отзывы и модерацию товаров
+      description: Добавляйте рейтинги, отзывы и модерацию товаров
+  category: other
+  author: lambdacurry
+  npm: '@lambdacurry/medusa-product-reviews'
+  repository: https://github.com/lambda-curry/medusa-plugins
+  lastPublish: '2025-09-04T22:04:07.174Z'
+  active: true
+- slug: devx-commerce-strapi
+  name:
+    en:
+      label: Strapi
+      shortDescription: Manage product content and assets with auto sync
+      description: Manage product content and assets with auto sync
+    ru:
+      label: Strapi
+      shortDescription: Управляйте контентом и медиа-файлами товаров с автосинхронизацией
+      description: Управляйте контентом и медиа-файлами товаров с автосинхронизацией
+  category: cms
+  author: devx-commerce
+  npm: '@devx-commerce/strapi'
+  lastPublish: '2025-10-06T19:42:26.120Z'
+  active: true
+- slug: medusa-variant-images
+  name:
+    en:
+      label: Variant Images
+      shortDescription: Organize and bulk-upload variant images in Medusa
+      description: Organize and bulk-upload variant images in Medusa
+    ru:
+      label: Variant Images
+      shortDescription: Организуйте и загружайте варианты изображений в Medusa
+      description: Организуйте и загружайте варианты изображений в Medusa
+  category: other
+  author: betanoir
+  npm: medusa-variant-images
+  repository: https://github.com/Betanoir/medusa-variant-images
+  lastPublish: '2025-09-08T14:40:05.299Z'
+  active: true
+- slug: medusa-dhl-ecommerce-fulfillment
+  name:
+    en:
+      label: DHL eCommerce
+      shortDescription: Fulfill orders with DHL eCommerce
+      description: Fulfill orders with DHL eCommerce
+    ru:
+      label: DHL eCommerce
+      shortDescription: Выполняйте заказы с помощью DHL eCommerce
+      description: Выполняйте заказы с помощью DHL eCommerce
+  category: shipping
+  author: mitchellston
+  npm: medusa-dhl-ecommerce-fulfillment
+  repository: https://github.com/mitchellston/medusa-dhl-ecommerce-fulfillment
+  lastPublish: '2026-01-11T16:43:49.191Z'
+  active: true
+- slug: medusa-payu-payment-plugin
+  name:
+    en:
+      label: PayU
+      shortDescription: Enable payments with PayU
+      description: Enable payments with PayU
+    ru:
+      label: PayU
+      shortDescription: Включите оплату через PayU
+      description: Включите оплату через PayU
+  category: payment
+  author: samael-bio
+  npm: medusa-payu-payment-plugin
+  repository: https://github.com/SAM-AEL/medusa-payu-payment-plugin
+  lastPublish: '2026-01-25T18:01:02.174Z'
+  active: true
+- slug: alphabite-medusa-storyblok
+  name:
+    en:
+      label: Storyblok
+      shortDescription: Sync products and assets with Storyblok
+      description: Sync products and assets with Storyblok
+    ru:
+      label: Storyblok
+      shortDescription: Синхронизируйте товары и медиа с Storyblok
+      description: Синхронизируйте товары и медиа с Storyblok
+  category: cms
+  author: alphabite
+  npm: '@alphabite/medusa-storyblok'
+  repository: https://github.com/alphabite-dev/medusa-storyblok
+  lastPublish: '2025-12-29T09:07:51.653Z'
+  active: true
+- slug: variablevic-mollie-payments-medusa
+  name:
+    en:
+      label: Mollie
+      shortDescription: Accept multi-currency payments easily with Mollie
+      description: Accept multi-currency payments easily with Mollie
+    ru:
+      label: Mollie
+      shortDescription: Легко принимайте мультивалютные платежи через Mollie
+      description: Легко принимайте мультивалютные платежи через Mollie
+  category: payment
+  author: variablevic
+  npm: '@variablevic/mollie-payments-medusa'
+  repository: https://github.com/variablevic/mollie-payments-medusa
+  lastPublish: '2025-04-29T09:54:23.252Z'
+  active: true
+- slug: techlabi-medusa-marketplace-plugin
+  name:
+    en:
+      label: Multivendor Marketplace
+      shortDescription: A multi-vendor Medusa plugin
+      description: A multi-vendor Medusa plugin
+    ru:
+      label: Multivendor Marketplace
+      shortDescription: Плагин Medusa для нескольких продавцов
+      description: Плагин Medusa для нескольких продавцов
+  category: other
+  author: techlabi
+  npm: '@techlabi/medusa-marketplace-plugin'
+  lastPublish: '2026-02-02T14:23:41.421Z'
+  active: true
+- slug: codee-sh-medusa-plugin-automations
+  name:
+    en:
+      label: Automations
+      shortDescription: Create flexible automations in Medusa
+      description: Create flexible automations in Medusa
+    ru:
+      label: Automations
+      shortDescription: Создавайте гибкие автоматизации в Medusa
+      description: Создавайте гибкие автоматизации в Medusa
+  category: other
+  author: codee-sh
+  npm: '@codee-sh/medusa-plugin-automations'
+  repository: https://github.com/codee-sh/medusa-plugin-automations
+  lastPublish: '2026-01-02T13:26:11.651Z'
+  active: true
+- slug: medusa-plugin-tolgee
+  name:
+    en:
+      label: Tolgee
+      shortDescription: Translate store content seamlessly with Tolgee
+      description: Translate store content seamlessly with Tolgee
+    ru:
+      label: Tolgee
+      shortDescription: Удобно переводите контент магазина с Tolgee
+      description: Удобно переводите контент магазина с Tolgee
+  category: cms
+  author: steelrazor47
+  npm: medusa-plugin-tolgee
+  repository: https://github.com/SteelRazor47/medusa-plugin-tolgee
+  lastPublish: '2025-11-06T12:44:09.466Z'
+  active: true
+- slug: medusa-payment-yookassa
+  name:
+    en:
+      label: YooKassa
+      shortDescription: Handle payments through YooKassa
+      description: Handle payments through YooKassa
+    ru:
+      label: ЮKassa
+      shortDescription: Обрабатывайте платежи через ЮKassa
+      description: Обрабатывайте платежи через ЮKassa
+  category: payment
+  author: sergkudinov
+  npm: medusa-payment-yookassa
+  repository: https://github.com/sergkudinov/medusa-payment-yookassa
+  lastPublish: '2025-12-18T13:06:50.739Z'
+  active: true
+- slug: variablevic-google-analytics-medusa
+  name:
+    en:
+      label: Google Analytics
+      shortDescription: Track ecommerce events related to orders and cart
+      description: Track ecommerce events related to orders and cart
+    ru:
+      label: Google Analytics
+      shortDescription: Отслеживайте e-commerce события заказов и корзины
+      description: Отслеживайте e-commerce события заказов и корзины
+  category: analytics
+  author: variablevic
+  npm: '@variablevic/google-analytics-medusa'
+  lastPublish: '2025-10-31T11:47:21.611Z'
+  active: true
+- slug: alphabite-medusa-paypal
+  name:
+    en:
+      label: PayPal
+      shortDescription: Use PayPal as a payment provider
+      description: Use PayPal as a payment provider
+    ru:
+      label: PayPal
+      shortDescription: Используйте PayPal как платежный провайдер
+      description: Используйте PayPal как платежный провайдер
+  category: payment
+  author: alphabite
+  npm: '@alphabite/medusa-paypal'
+  repository: https://github.com/alphabite-dev/medusa-paypal
+  lastPublish: '2026-02-03T10:52:02.857Z'
+  active: true
+- slug: nicogorga-medusa-payment-mercadopago
+  name:
+    en:
+      label: Mercadopago
+      shortDescription: Accept payments across Latin America
+      description: Accept payments across Latin America
+    ru:
+      label: Mercadopago
+      shortDescription: Принимайте платежи по всей Латинской Америке
+      description: Принимайте платежи по всей Латинской Америке
+  category: payment
+  author: nicogorga
+  npm: '@nicogorga/medusa-payment-mercadopago'
+  lastPublish: '2025-10-22T18:37:54.617Z'
+  active: true
+- slug: gorgo-medusa-payment-tkassa
+  name:
+    en:
+      label: T-Kassa by T-Bank
+      shortDescription: Enable seamless payments with T-Bank
+      description: Enable seamless payments with T-Bank
+    ru:
+      label: Т-Касса от T-Банка
+      shortDescription: Подключите бесшовные платежи через Т-Банк
+      description: Подключите бесшовные платежи через Т-Банк
+  category: payment
+  author: gorgo
+  npm: '@gorgo/medusa-payment-tkassa'
+  repository: https://github.com/gorgojs/medusa-plugins
+  lastPublish: '2026-02-02T11:30:14.854Z'
+  active: true
+- slug: webbers-mailgun-notification-medusa
+  name:
+    en:
+      label: Mailgun
+      shortDescription: Send and manage email notifications
+      description: Send and manage email notifications
+    ru:
+      label: Mailgun
+      shortDescription: Отправляйте и управляйте уведомлениями по электронной почте
+      description: Отправляйте и управляйте уведомлениями по электронной почте
+  category: notification
+  author: webbers
+  npm: '@webbers/mailgun-notification-medusa'
+  repository: https://github.com/webbersagency/mailgun-notification-medusa
+  lastPublish: '2026-01-15T16:59:19.716Z'
+  active: true
+- slug: rsc-labs-medusa-paypal-payment
+  name:
+    en:
+      label: PayPal
+      shortDescription: Use PayPal as payment provider
+      description: Use PayPal as payment provider
+    ru:
+      label: PayPal
+      shortDescription: Используйте PayPal как платежный провайдер
+      description: Используйте PayPal как платежный провайдер
+  category: payment
+  author: rsc-labs
+  npm: '@rsc-labs/medusa-paypal-payment'
+  repository: https://github.com/RSC-Labs/medusa-paypal-payment
+  lastPublish: '2025-05-27T14:03:50.973Z'
+  active: true
+- slug: medusa-payment-tochka
+  name:
+    en:
+      label: Tochka
+      shortDescription: Enable secure Tochka payments
+      description: Enable secure Tochka payments
+    ru:
+      label: Tochka
+      shortDescription: Подключите безопасные платежи через Точка Банк
+      description: Подключите безопасные платежи через Точка Банк
+  category: payment
+  author: fatheroctber
+  npm: medusa-payment-tochka
+  repository: https://github.com/fatheroctber/medusa-payment-tochka
+  lastPublish: '2025-12-16T19:28:11.131Z'
+  active: true
+- slug: medusa-plugin-razorpay-v2
+  name:
+    en:
+      label: Razorpay
+      shortDescription: Integrate the latest Razorpay payment APIs
+      description: Integrate the latest Razorpay payment APIs
+    ru:
+      label: Razorpay
+      shortDescription: Интегрируйте новейшие платежные API Razorpay
+      description: Интегрируйте новейшие платежные API Razorpay
+  category: other
+  author: sgfgov
+  npm: medusa-plugin-razorpay-v2
+  repository: https://github.com/SGFGOV/medusa-payment-plugins
+  lastPublish: '2025-12-31T11:03:31.758Z'
+  active: true
+- slug: lambdacurry-medusa-webhooks
+  name:
+    en:
+      label: Webhooks
+      shortDescription: Configure and manage outgoing webhooks
+      description: Configure and manage outgoing webhooks
+    ru:
+      label: Webhooks
+      shortDescription: Настраивайте и управляйте исходящими вебхуками
+      description: Настраивайте и управляйте исходящими вебхуками
+  category: other
+  author: lambdacurry
+  npm: '@lambdacurry/medusa-webhooks'
+  lastPublish: '2025-04-14T18:56:59.571Z'
+  active: true
+- slug: alpha-solutions-medusa-image-alt
+  name:
+    en:
+      label: Image-alt
+      shortDescription: Manage product image alt metadata in bulk
+      description: Manage product image alt metadata in bulk
+    ru:
+      label: Image-alt
+      shortDescription: Массово редактируйте alt-тексты изображений товаров
+      description: Массово редактируйте alt-тексты изображений товаров
+  category: other
+  author: alpha-solutions
+  npm: '@alpha-solutions/medusa-image-alt'
+  lastPublish: '2025-09-03T09:16:43.283Z'
+  active: true
+- slug: gorgo-medusa-payment-robokassa
+  name:
+    en:
+      label: Robokassa
+      shortDescription: Accept Robokassa payments
+      description: Accept Robokassa payments
+    ru:
+      label: Robokassa
+      shortDescription: Подключите оплату через Robokassa
+      description: Подключите оплату через Robokassa
+  category: payment
+  author: gorgo
+  npm: '@gorgo/medusa-payment-robokassa'
+  repository: https://github.com/gorgojs/medusa-plugins
+  lastPublish: '2026-02-02T11:30:01.659Z'
+  active: true
+- slug: devx-commerce-passwordless
+  name:
+    en:
+      label: Passwordless
+      shortDescription: Add SMS-based passwordless login
+      description: Add SMS-based passwordless login
+    ru:
+      label: Passwordless
+      shortDescription: Добавьте беспарольный вход по SMS
+      description: Добавьте беспарольный вход по SMS
+  category: auth
+  author: devx-commerce
+  npm: '@devx-commerce/passwordless'
+  repository: https://github.com/devx-commerce/plugin-passwordless
+  lastPublish: '2026-01-21T10:41:15.189Z'
+  active: true
+- slug: rokmohar-medusa-payment-manual
+  name:
+    en:
+      label: Manual Payment
+      shortDescription: Default provider, use for manual payment handling
+      description: Default provider, use for manual payment handling
+    ru:
+      label: Manual Payment
+      shortDescription: Дефолтный провайдер для ручного приёма оплаты
+      description: Дефолтный провайдер для ручного приёма оплаты
+  category: payment
+  author: rokmohar
+  npm: '@rokmohar/medusa-payment-manual'
+  repository: https://github.com/rokmohar/medusa-payment-manual
+  lastPublish: '2025-07-25T07:27:39.614Z'
+  active: true
+- slug: gorgo-medusa-feed-yandex
+  name:
+    en:
+      label: Yandex YML Feed
+      shortDescription: Create and manage product feeds in YML (Yandex Market Language) format
+      description: Create and manage product feeds in YML (Yandex Market Language) format
+    ru:
+      label: Яндекс YML-фид
+      shortDescription: Создавайте и управляйте фидами товаров в формате YML (Yandex Market Language)
+      description: Создавайте и управляйте фидами товаров в формате YML (Yandex Market Language)
+  category: other
+  author: gorgo
+  npm: '@gorgo/medusa-feed-yandex'
+  repository: https://github.com/gorgojs/medusa-plugins
+  lastPublish: '2026-01-16T17:18:32.151Z'
+  active: true
+- slug: gorgo-medusa-1c
+  name:
+    en:
+      label: 1C
+      shortDescription: Sync products, orders, and inventory
+      description: Sync products, orders, and inventory
+    ru:
+      label: 1С
+      shortDescription: Синхронизируйте товары, заказы и склад
+      description: Синхронизируйте товары, заказы и склад
+  category: other
+  author: gorgo
+  npm: '@gorgo/medusa-1c'
+  repository: https://github.com/gorgojs/medusa-plugins
+  lastPublish: '2026-01-16T17:19:41.771Z'
+  active: true
+- slug: payment-authorizenet-medusa
+  name:
+    en:
+      label: Authorize.net
+      shortDescription: Authorize.net payment provider by VISA
+      description: Authorize.net payment provider by VISA
+    ru:
+      label: Authorize.net
+      shortDescription: Платёжный провайдер Authorize.Net от Visa
+      description: Платёжный провайдер Authorize.Net от Visa
+  category: payment
+  author: authorizenet
+  npm: payment-authorizenet-medusa
+  repository: https://github.com/AuthorizeNet/medusa-payment-plugin
+  lastPublish: '2025-07-01T05:50:14.692Z'
+  active: true
+- slug: blegaut-medusa-product-reviews-enhanced
+  name:
+    en:
+      label: Product Reviews
+      shortDescription: Enhance product reviews with advanced features
+      description: Enhance product reviews with advanced features
+    ru:
+      label: Product Reviews
+      shortDescription: Прокачайте отзывы о товарах расширенными функциями
+      description: Прокачайте отзывы о товарах расширенными функциями
+  category: other
+  author: blegaut
+  npm: '@blegaut/medusa-product-reviews-enhanced'
+  repository: https://github.com/lambda-curry/medusa-plugins
+  lastPublish: '2025-11-16T22:58:24.646Z'
+  active: true
+- slug: devx-commerce-passwordless-svaraa
+  name:
+    en:
+      label: Passwordless
+      shortDescription: Add SMS-based passwordless login
+      description: Add SMS-based passwordless login
+    ru:
+      label: Passwordless
+      shortDescription: Добавьте беспарольный вход по SMS
+      description: Добавьте беспарольный вход по SMS
+  category: auth
+  author: devx-commerce
+  npm: '@devx-commerce/passwordless-svaraa'
+  repository: https://github.com/devx-commerce/plugin-passwordless
+  lastPublish: '2025-11-25T04:59:23.121Z'
+  active: false
+- slug: linearcommerce-product-custom-attributes
+  name:
+    en:
+      label: Custom Product Attributes
+      shortDescription: Sync custom product attributes by category
+      description: Sync custom product attributes by category
+    ru:
+      label: Custom Product Attributes
+      shortDescription: Синхронизация пользовательских атрибутов товаров по категориям
+      description: Синхронизация пользовательских атрибутов товаров по категориям
+  category: other
+  author: linearcommerce
+  npm: '@linearcommerce/product-custom-attributes'
+  repository: https://github.com/Linearloop-Pvt-Ltd/product-custom-attributes
+  lastPublish: '2025-09-30T12:40:13.594Z'
+  active: true
+- slug: igorppbr-medusa-v2-gcp-file-provider
+  name:
+    en:
+      label: Google Cloud Storage
+      shortDescription: Store uploaded files using Google Cloud Storage
+      description: Store uploaded files using Google Cloud Storage
+    ru:
+      label: Google Cloud Storage
+      shortDescription: Сохраняйте загружаемые файлы через Google Cloud Storage
+      description: Сохраняйте загружаемые файлы через Google Cloud Storage
+  category: other
+  author: igorppbr
+  npm: '@igorppbr/medusa-v2-gcp-file-provider'
+  repository: https://github.com/igorppbr/medusa-gcp-storage
+  lastPublish: '2025-09-22T20:01:44.118Z'
+  active: true
+- slug: joey-d-mollie-payments-medusa
+  name:
+    en:
+      label: Mollie
+      shortDescription: Accept multi-currency payments easily with Mollie
+      description: Accept multi-currency payments easily with Mollie
+    ru:
+      label: Mollie
+      shortDescription: Легко принимайте мультивалютные платежи через Mollie
+      description: Легко принимайте мультивалютные платежи через Mollie
+  category: payment
+  author: joey-d
+  npm: '@joey-d/mollie-payments-medusa'
+  repository: https://github.com/JoeyDaems/mollie-payments-medusa
+  lastPublish: '2025-12-17T20:56:01.910Z'
+  active: false
+- slug: crza69-medusa-plugins
+  name:
+    en:
+      label: Medusa Plugins Collection
+      shortDescription: Enhance your Medusa store with our curated plugins
+      description: Enhance your Medusa store with our curated plugins
+    ru:
+      label: Medusa Plugins Collection
+      shortDescription: Прокачайте магазин на Medusa нашими отобранными плагинами
+      description: Прокачайте магазин на Medusa нашими отобранными плагинами
+  category: payment
+  author: crza69
+  npm: '@crza69/medusa-plugins'
+  repository: https://github.com/CRZA5/medusa-plugins
+  lastPublish: '2026-01-25T17:28:23.578Z'
+  active: false
+- slug: alphabite-medusa-wishlist
+  name:
+    en:
+      label: Wishlist
+      shortDescription: Let guests and users set up wishlists
+      description: Let guests and users set up wishlists
+    ru:
+      label: Wishlist
+      shortDescription: Позвольте гостям и пользователям создавать вишлисты
+      description: Позвольте гостям и пользователям создавать вишлисты
+  category: other
+  author: alphabite
+  npm: '@alphabite/medusa-wishlist'
+  repository: https://github.com/alphabite-dev/medusa-wishlist
+  lastPublish: '2025-12-09T09:10:23.767Z'
+  active: true
+- slug: devx-commerce-strapi-x-custom-jw-mayave
+  name:
+    en:
+      label: Strapi
+      shortDescription: Manage product content and assets with auto sync
+      description: Manage product content and assets with auto sync
+    ru:
+      label: Strapi
+      shortDescription: Управляйте контентом и медиа-файлами товаров с автосинхронизацией
+      description: Управляйте контентом и медиа-файлами товаров с автосинхронизацией
+  category: cms
+  author: devx-commerce
+  npm: '@devx-commerce/strapi-x-custom-jw-mayave'
+  repository: https://github.com/devx-commerce/plugin-strapi
+  lastPublish: '2025-10-10T14:48:42.194Z'
+  active: false
+- slug: medusa-mondialrelay
+  name:
+    en:
+      label: Mondial Relay
+      shortDescription: Ship orders with Mondial Relay
+      description: Ship orders with Mondial Relay
+    ru:
+      label: Mondial Relay
+      shortDescription: Доставляйте заказы с Mondial Relay
+      description: Доставляйте заказы с Mondial Relay
+  category: shipping
+  author: theodaguier
+  npm: medusa-mondialrelay
+  lastPublish: '2025-12-14T01:05:54.012Z'
+  active: true
+- slug: m-nasser-m-medusa-payment-instapay-manual
+  name:
+    en:
+      label: InstaPay
+      shortDescription: Accept InstaPay payments
+      description: Accept InstaPay payments
+    ru:
+      label: InstaPay
+      shortDescription: Принимайте платежи через InstaPay
+      description: Принимайте платежи через InstaPay
+  category: payment
+  author: m-nasser-m
+  npm: '@m-nasser-m/medusa-payment-instapay-manual'
+  repository: https://github.com/M-Nasser-M/instapay-manual-payment-plugin
+  lastPublish: '2026-01-03T00:03:15.462Z'
+  active: true
+- slug: gorgo-medusa-fulfillment-apiship
+  name:
+    en:
+      label: ApiShip
+      shortDescription: Enable multi-carrier shipping
+      description: Enable multi-carrier shipping
+    ru:
+      label: ApiShip
+      shortDescription: Подключите доставку несколькими перевозчиками
+      description: Подключите доставку несколькими перевозчиками
+  category: shipping
+  author: gorgo
+  npm: '@gorgo/medusa-fulfillment-apiship'
+  repository: https://github.com/gorgojs/medusa-plugins
+  lastPublish: '2026-02-02T11:29:50.739Z'
+  active: true
+- slug: gmisoftware-przelewy24-payments-medusa
+  name:
+    en:
+      label: Przelewy24
+      shortDescription: Support payments via Przelewy24
+      description: Support payments via Przelewy24
+    ru:
+      label: Przelewy24
+      shortDescription: Поддержка платежей через Przelewy24
+      description: Поддержка платежей через Przelewy24
+  category: payment
+  author: gmisoftware
+  npm: '@gmisoftware/przelewy24-payments-medusa'
+  repository: https://github.com/gmi-software/przelewy24-medusa
+  lastPublish: '2026-02-10T06:57:44.534Z'
+  active: true
+- slug: m-nasser-m-medusa-payment-vodafone-cash-manual
+  name:
+    en:
+      label: Vodafone
+      shortDescription: Accept Vodafone payments
+      description: Accept Vodafone payments
+    ru:
+      label: Vodafone
+      shortDescription: Принимайте платежи через Vodafone
+      description: Принимайте платежи через Vodafone
+  category: payment
+  author: m-nasser-m
+  npm: '@m-nasser-m/medusa-payment-vodafone-cash-manual'
+  repository: https://github.com/M-Nasser-M/vodafonecash-manual-payment-plugin
+  lastPublish: '2026-01-03T00:01:39.541Z'
+  active: false
+- slug: medusa-plugin-postmark
+  name:
+    en:
+      label: Postmark
+      shortDescription: Transactional emails via Postmark
+      description: Transactional emails via Postmark
+    ru:
+      label: Postmark
+      shortDescription: Транзакционные письма через Postmark
+      description: Транзакционные письма через Postmark
+  category: notification
+  author: bram-hammer
+  npm: medusa-plugin-postmark
+  repository: https://github.com/Fullstak-nl/medusa-plugin-postmark
+  lastPublish: '2025-10-28T23:10:33.051Z'
+  active: true
+- slug: eancarr-klaviyo-medusa
+  name:
+    en:
+      label: Klaviyo
+      shortDescription: Sync customers, orders, and products directly into Klaviyo
+      description: Sync customers, orders, and products directly into Klaviyo
+    ru:
+      label: Klaviyo
+      shortDescription: Синхронизируйте клиентов, заказы и товары прямо в Klaviyo
+      description: Синхронизируйте клиентов, заказы и товары прямо в Klaviyo
+  category: notification
+  author: eancarr
+  npm: '@eancarr/klaviyo-medusa'
+  repository: https://github.com/eancarr/klaviyo-medusa
+  lastPublish: '2025-10-31T17:32:01.327Z'
+  active: true
+- slug: teodorasiljanoska-medusa-paypal
+  name:
+    en:
+      label: PayPal
+      shortDescription: Use PayPal as a payment provider
+      description: Use PayPal as a payment provider
+    ru:
+      label: PayPal
+      shortDescription: Используйте PayPal как платежный провайдер
+      description: Используйте PayPal как платежный провайдер
+  category: payment
+  author: teodorasiljanoska
+  npm: '@teodorasiljanoska/medusa-paypal'
+  repository: https://github.com/alphabite-dev/medusa-paypal
+  lastPublish: '2026-01-09T13:05:01.327Z'
+  active: false
+- slug: nakamotosbutt-medusa-product-reviews-enhanced
+  name:
+    en:
+      label: Product Reviews
+      shortDescription: Enhance product reviews with advanced features
+      description: Enhance product reviews with advanced features
+    ru:
+      label: Product Reviews
+      shortDescription: Прокачайте отзывы о товарах расширенными функциями
+      description: Прокачайте отзывы о товарах расширенными функциями
+  category: other
+  author: nakamotosbutt
+  npm: '@nakamotosbutt/medusa-product-reviews-enhanced'
+  repository: https://github.com/lambda-curry/medusa-plugins
+  lastPublish: '2025-09-19T10:45:37.151Z'
+  active: false
+- slug: vymalo-medusa-keycloak
+  name:
+    en:
+      label: Keycloak
+      shortDescription: Enable secure Keycloak login and access control
+      description: Enable secure Keycloak login and access control
+    ru:
+      label: Keycloak
+      shortDescription: Подключите безопасный вход через Keycloak и контроль доступа
+      description: Подключите безопасный вход через Keycloak и контроль доступа
+  category: auth
+  author: vymalo
+  npm: '@vymalo/medusa-keycloak'
+  repository: https://github.com/vymalo/medusajs
+  lastPublish: '2025-07-21T14:27:55.980Z'
+  active: true
+- slug: connectycube-chat-widget-medusa-plugin
+  name:
+    en:
+      label: Chat Widget
+      shortDescription: Enable real-time chat for seller/buyer
+      description: Enable real-time chat for seller/buyer
+    ru:
+      label: Chat Widget
+      shortDescription: Включите чат в реальном времени для продавца и покупателя
+      description: Включите чат в реальном времени для продавца и покупателя
+  category: other
+  author: connectycube
+  npm: '@connectycube/chat-widget-medusa-plugin'
+  lastPublish: '2025-07-03T07:58:39.598Z'
+  active: true
+- slug: medusa-paypal-authorize
+  name:
+    en:
+      label: PayPal
+      shortDescription: Use PayPal as a payment provider
+      description: Use PayPal as a payment provider
+    ru:
+      label: PayPal
+      shortDescription: Use PayPal as a payment provider
+      description: Use PayPal as a payment provider
+  category: payment
+  author: nakamotosbutt
+  npm: medusa-paypal-authorize
+  repository: https://github.com/apiscerena/medusa-paypal
+  lastPublish: '2025-09-22T04:23:53.861Z'
+  active: false
+- slug: zosmaai-medusa-v2-gcp-file-provider
+  name:
+    en:
+      label: Google Cloud Storage
+      shortDescription: Store uploaded files using Google Cloud Storage
+      description: Store uploaded files using Google Cloud Storage
+    ru:
+      label: Google Cloud Storage
+      shortDescription: Сохраняйте загружаемые файлы через Google Cloud Storage
+      description: Сохраняйте загружаемые файлы через Google Cloud Storage
+  category: other
+  author: zosmaai
+  npm: '@zosmaai/medusa-v2-gcp-file-provider'
+  repository: https://github.com/SensaLab/medusa-gcp-storage
+  lastPublish: '2026-01-03T00:27:34.853Z'
+  active: false
+- slug: devx-commerce-passwordless-x-custom-jw-mayave
+  name:
+    en:
+      label: Passwordless
+      shortDescription: Add SMS-based passwordless login
+      description: Add SMS-based passwordless login
+    ru:
+      label: Passwordless
+      shortDescription: Добавьте беспарольный вход по SMS
+      description: Добавьте беспарольный вход по SMS
+  category: auth
+  author: devx-commerce
+  npm: '@devx-commerce/passwordless-x-custom-jw-mayave'
+  repository: https://github.com/devx-commerce/plugin-passwordless
+  lastPublish: '2025-10-10T07:24:24.163Z'
+  active: false
+- slug: u11d-medusa-avalara
+  name:
+    en:
+      label: Avalara
+      shortDescription: Avalara AvaTax automated tax calculations
+      description: Avalara AvaTax automated tax calculations
+    ru:
+      label: Avalara
+      shortDescription: Автоматизация расчёта налогов с Avalara AvaTax
+      description: Автоматизация расчёта налогов с Avalara AvaTax
+  category: other
+  author: u11d
+  npm: '@u11d/medusa-avalara'
+  repository: https://github.com/u11d-com/medusa-avalara
+  lastPublish: '2025-11-21T19:49:09.853Z'
+  active: true
+- slug: vymalo-medusa-apprise
+  name:
+    en:
+      label: Apprise
+      shortDescription: Send multichannel notifications in Medusa
+      description: Send multichannel notifications in Medusa
+    ru:
+      label: Apprise
+      shortDescription: Отправляйте мультиканальные уведомления в Medusa
+      description: Отправляйте мультиканальные уведомления в Medusa
+  category: notification
+  author: vymalo
+  npm: '@vymalo/medusa-apprise'
+  repository: https://github.com/vymalo/medusajs
+  lastPublish: '2025-05-29T22:53:14.598Z'
+  active: true
+- slug: medusa-plugin-btcpay
+  name:
+    en:
+      label: BTCPay
+      shortDescription: Accept Bitcoin payments with BTCPay
+      description: Accept Bitcoin payments with BTCPay
+    ru:
+      label: BTCPay
+      shortDescription: Принимайте Bitcoin-платежи через BTCPay
+      description: Принимайте Bitcoin-платежи через BTCPay
+  category: payment
+  author: sgfgov
+  npm: medusa-plugin-btcpay
+  repository: https://github.com/SGFGOV/medusa-payment-plugins
+  lastPublish: '2025-08-21T04:34:30.748Z'
+  active: true
+- slug: igorppbr-medusa-v2-fedex-fulfillment
+  name:
+    en:
+      label: FedEx
+      shortDescription: Automate shipping with FedEx
+      description: Automate shipping with FedEx
+    ru:
+      label: FedEx
+      shortDescription: Автоматизируйте доставку через FedEx
+      description: Автоматизируйте доставку через FedEx
+  category: shipping
+  author: igorppbr
+  npm: '@igorppbr/medusa-v2-fedex-fulfillment'
+  repository: https://github.com/igorppbr/medusa-fedex-fulfillment
+  lastPublish: '2025-09-22T19:49:09.113Z'
+  active: true
+- slug: vymalo-medusa-mail
+  name:
+    en:
+      label: Mail Templates
+      shortDescription: Create email templates for Medusa
+      description: Create email templates for Medusa
+    ru:
+      label: Mail Templates
+      shortDescription: Создавайте шаблоны писем для Medusa
+      description: Создавайте шаблоны писем для Medusa
+  category: notification
+  author: vymalo
+  npm: '@vymalo/medusa-mail'
+  repository: https://github.com/vymalo/medusajs
+  lastPublish: '2025-05-29T22:53:14.654Z'
+  active: true
+- slug: vymalo-medusa-meilisearch
+  name:
+    en:
+      label: MeiliSearch
+      shortDescription: Enable fast search with MeiliSearch
+      description: Enable fast search with MeiliSearch
+    ru:
+      label: MeiliSearch
+      shortDescription: Подключите быстрый поиск с MeiliSearch
+      description: Подключите быстрый поиск с MeiliSearch
+  category: search
+  author: vymalo
+  npm: '@vymalo/medusa-meilisearch'
+  repository: https://github.com/vymalo/medusajs
+  lastPublish: '2025-05-29T22:53:14.892Z'
+  active: true
+- slug: rokmohar-medusa-plugin-unsend
+  name:
+    en:
+      label: Unsend
+      shortDescription: Build email templates with Unsend
+      description: Build email templates with Unsend
+    ru:
+      label: Unsend
+      shortDescription: Создавайте шаблоны писем с Unsend
+      description: Создавайте шаблоны писем с Unsend
+  category: notification
+  author: rokmohar
+  npm: '@rokmohar/medusa-plugin-unsend'
+  repository: https://github.com/rokmohar/medusa-plugin-unsend
+  lastPublish: '2025-07-25T07:25:01.411Z'
+  active: true
+- slug: vymalo-medusa-minio
+  name:
+    en:
+      label: MinIO
+      shortDescription: Manage file storage with MinIO
+      description: Manage file storage with MinIO
+    ru:
+      label: MinIO
+      shortDescription: Управляйте файловым хранилищем через MinIO
+      description: Управляйте файловым хранилищем через MinIO
+  category: other
+  author: vymalo
+  npm: '@vymalo/medusa-minio'
+  repository: https://github.com/vymalo/medusajs
+  lastPublish: '2025-05-29T22:53:14.829Z'
+  active: true
+- slug: hicity-medusa-plugin-tolgee
+  name:
+    en:
+      label: Tolgee
+      shortDescription: Translate store content seamlessly with Tolgee
+      description: Translate store content seamlessly with Tolgee
+    ru:
+      label: Tolgee
+      shortDescription: Удобно переводите контент магазина с Tolgee
+      description: Удобно переводите контент магазина с Tolgee
+  category: cms
+  author: hicity
+  npm: '@hicity/medusa-plugin-tolgee'
+  repository: https://github.com/cao0109/medusa-plugin-tolgee
+  lastPublish: '2025-09-09T03:18:23.837Z'
+  active: false
+- slug: vymalo-medusa-webauthn
+  name:
+    en:
+      label: WebAuthn
+      shortDescription: Enable passwordless authentication
+      description: Enable passwordless authentication
+    ru:
+      label: WebAuthn
+      shortDescription: Включите беспарольную аутентификацию
+      description: Включите беспарольную аутентификацию
+  category: auth
+  author: vymalo
+  npm: '@vymalo/medusa-webauthn'
+  repository: https://github.com/vymalo/medusajs
+  lastPublish: '2025-06-02T01:43:18.250Z'
+  active: true
+- slug: linearcommerce-medusa-category-thumbnail
+  name:
+    en:
+      label: Category Thumbnail
+      shortDescription: Add category thumbnails to storefront
+      description: Add category thumbnails to storefront
+    ru:
+      label: Category Thumbnail
+      shortDescription: Добавьте превью категорий в витрине
+      description: Добавьте превью категорий в витрине
+  category: other
+  author: linearcommerce
+  npm: '@linearcommerce/medusa-category-thumbnail'
+  repository: https://github.com/Linearloop-Pvt-Ltd/category-thumbnail
+  lastPublish: '2025-11-05T13:06:01.520Z'
+  active: true
+- slug: igorppbr-medusa-v2-bloomreach
+  name:
+    en:
+      label: Bloomreach
+      shortDescription: Send notifications and track engagement
+      description: Send notifications and track engagement
+    ru:
+      label: Bloomreach
+      shortDescription: Отправляйте уведомления и отслеживайте вовлечённость
+      description: Отправляйте уведомления и отслеживайте вовлечённость
+  category: analytics
+  author: igorppbr
+  npm: '@igorppbr/medusa-v2-bloomreach'
+  repository: https://github.com/igorppbr/medusa-v2-bloomreach
+  lastPublish: '2025-12-05T20:20:57.950Z'
+  active: true
+- slug: siddarthan007-notification-nodemailer
+  name:
+    en:
+      label: Nodemailer
+      shortDescription: Send email notifications using Nodemailer (SMTP)
+      description: Send email notifications using Nodemailer (SMTP)
+    ru:
+      label: Nodemailer
+      shortDescription: Отправляйте email-уведомления через Nodemailer (SMTP)
+      description: Отправляйте email-уведомления через Nodemailer (SMTP)
+  category: notification
+  author: siddarthan007
+  npm: '@siddarthan007/notification-nodemailer'
+  lastPublish: '2025-10-15T21:50:45.902Z'
+  active: false
+- slug: medusa-variant-images-updated
+  name:
+    en:
+      label: Variant Images
+      shortDescription: Organize and bulk-upload variant images in Medusa
+      description: Organize and bulk-upload variant images in Medusa
+    ru:
+      label: Variant Images
+      shortDescription: Организуйте и загружайте варианты изображений в Medusa
+      description: Организуйте и загружайте варианты изображений в Medusa
+  category: other
+  author: teodorasiljanoska
+  npm: medusa-variant-images-updated
+  repository: https://github.com/teodorasiljanoska/medusa-variant-images
+  lastPublish: '2025-07-11T12:48:52.516Z'
+  active: true
+- slug: relewise-medusa
+  name:
+    en:
+      label: Relewise
+      shortDescription: Power product search with Relewise
+      description: Power product search with Relewise
+    ru:
+      label: Relewise
+      shortDescription: Прокачайте поиск по товарам с Relewise
+      description: Прокачайте поиск по товарам с Relewise
+  category: search
+  author: relewise
+  npm: '@relewise/medusa'
+  lastPublish: '2025-05-21T10:51:39.581Z'
+  active: true
+- slug: sradevski-medusa-payment-halkbank
+  name:
+    en:
+      label: Halkbank
+      shortDescription: Accept payments with Halkbank
+      description: Accept payments with Halkbank
+    ru:
+      label: Halkbank
+      shortDescription: Подключите оплату через Halkbank
+      description: Подключите оплату через Halkbank
+  category: payment
+  author: sradevski
+  npm: '@sradevski/medusa-payment-halkbank'
+  lastPublish: '2025-05-12T19:18:37.889Z'
+  active: true
+- slug: asyntai-medusa-plugin-chatbot
+  name:
+    en:
+      label: Asyntai
+      shortDescription: Add an AI chatbot with Asyntai
+      description: Add an AI chatbot with Asyntai
+    ru:
+      label: Asyntai
+      shortDescription: Добавьте ИИ-чатбота с Asyntai
+      description: Добавьте ИИ-чатбота с Asyntai
+  category: other
+  author: asyntai
+  npm: '@asyntai/medusa-plugin-chatbot'
+  repository: https://github.com/asyntai/medusa-chatbot
+  lastPublish: '2025-11-18T07:44:36.559Z'
+  active: false
+- slug: product-variant-images-fixed
+  name:
+    en:
+      label: Variant Images
+      shortDescription: Organize and bulk-upload variant images in Medusa
+      description: Organize and bulk-upload variant images in Medusa
+    ru:
+      label: Variant Images
+      shortDescription: Организуйте и загружайте варианты изображений в Medusa
+      description: Организуйте и загружайте варианты изображений в Medusa
+  category: other
+  author: npmjetski
+  npm: product-variant-images-fixed
+  repository: https://github.com/Betanoir/medusa-variant-images
+  lastPublish: '2025-07-22T21:33:49.377Z'
+  active: false
+- slug: meduline-medusa-plugin-variant-images
+  name:
+    en:
+      label: Variant Images
+      shortDescription: Organize and bulk-upload variant images in Medusa
+      description: Organize and bulk-upload variant images in Medusa
+    ru:
+      label: Variant Images
+      shortDescription: Организуйте и загружайте варианты изображений в Medusa
+      description: Организуйте и загружайте варианты изображений в Medusa
+  category: other
+  author: meduline
+  npm: '@meduline/medusa-plugin-variant-images'
+  repository: https://github.com/meduline/medusa-plugin-variant-images
+  lastPublish: '2025-09-06T09:39:07.995Z'
+  active: true
+- slug: medusa-plugin-razorpay-rh
+  name:
+    en:
+      label: Razorpay
+      shortDescription: Integrate the latest Razorpay payment APIs
+      description: Integrate the latest Razorpay payment APIs
+    ru:
+      label: Razorpay
+      shortDescription: Интегрируйте новейшие платежные API Razorpay
+      description: Интегрируйте новейшие платежные API Razorpay
+  category: other
+  author: roho7
+  npm: medusa-plugin-razorpay-rh
+  lastPublish: '2025-07-24T04:08:36.263Z'
+  active: false
+- slug: youleap-medusa-webhooks
+  name:
+    en:
+      label: Webhooks
+      shortDescription: Configure and manage outgoing webhooks
+      description: Configure and manage outgoing webhooks
+    ru:
+      label: Webhooks
+      shortDescription: Настраивайте и управляйте исходящими вебхуками
+      description: Настраивайте и управляйте исходящими вебхуками
+  category: other
+  author: devretail
+  npm: youleap-medusa-webhooks
+  lastPublish: '2025-09-17T12:05:13.220Z'
+  active: false
+- slug: nackamoto-medusa-paypal-payment
+  name:
+    en:
+      label: PayPal
+      shortDescription: Use PayPal as payment provider
+      description: Use PayPal as payment provider
+    ru:
+      label: PayPal
+      shortDescription: Используйте PayPal в качестве платежного провайдера
+      description: Используйте PayPal в качестве платежного провайдера
+  category: payment
+  author: nackamoto
+  npm: '@nackamoto/medusa-paypal-payment'
+  repository: https://github.com/OxMasterArchitect/paypal-provider-medusajs
+  lastPublish: '2025-08-10T21:22:51.551Z'
+  active: true
+- slug: asyntai-medusa-chatbot
+  name:
+    en:
+      label: Asyntai
+      shortDescription: Add an AI chatbot with Asyntai
+      description: Add an AI chatbot with Asyntai
+    ru:
+      label: Asyntai
+      shortDescription: Добавьте ИИ-чатбота с Asyntai
+      description: Добавьте ИИ-чатбота с Asyntai
+  category: other
+  author: asyntai
+  npm: '@asyntai/medusa-chatbot'
+  repository: https://github.com/asyntai/medusa-chatbot
+  lastPublish: '2025-11-08T08:35:08.249Z'
+  active: true
+- slug: medusa-plugin-meilisearch-variants-v3
+  name:
+    en:
+      label: MeiliSearch
+      shortDescription: Enable fast search with MeiliSearch
+      description: Enable fast search with MeiliSearch
+    ru:
+      label: MeiliSearch
+      shortDescription: Подключите быстрый поиск с MeiliSearch
+      description: Подключите быстрый поиск с MeiliSearch
+  category: search
+  author: deroswent
+  npm: medusa-plugin-meilisearch-variants-v3
+  lastPublish: '2025-08-03T06:19:09.272Z'
+  active: true
+- slug: variablevic-klaviyo-medusa
+  name:
+    en:
+      label: Klaviyo
+      shortDescription: Sync customers, orders, and products directly into Klaviyo
+      description: Sync customers, orders, and products directly into Klaviyo
+    ru:
+      label: Klaviyo
+      shortDescription: Синхронизируйте клиентов, заказы и продукты напрямую в Klaviyo
+      description: Синхронизируйте клиентов, заказы и продукты напрямую в Klaviyo
+  category: notification
+  author: variablevic
+  npm: '@variablevic/klaviyo-medusa'
+  lastPublish: '2025-04-15T12:30:17.512Z'
+  active: false
+- slug: gaborottlik-medusa-plugin-gcp-cloud-storage
+  name:
+    en:
+      label: Google Cloud Storage
+      shortDescription: Store uploaded files using Google Cloud Storage
+      description: Store uploaded files using Google Cloud Storage
+    ru:
+      label: Google Cloud Storage
+      shortDescription: Храните загруженные файлы с помощью Google Cloud Storage
+      description: Храните загруженные файлы с помощью Google Cloud Storage
+  category: other
+  author: gaborottlik
+  npm: '@gaborottlik/medusa-plugin-gcp-cloud-storage'
+  lastPublish: '2025-05-16T13:41:19.833Z'
+  active: false
+- slug: medusa-plugin-tolgee-ttnhat-dev
+  name:
+    en:
+      label: Tolgee
+      shortDescription: Translate store content seamlessly with Tolgee
+      description: Translate store content seamlessly with Tolgee
+    ru:
+      label: Tolgee
+      shortDescription: Удобно переводите контент магазина с Tolgee
+      description: Удобно переводите контент магазина с Tolgee
+  category: cms
+  author: ttnhat61
+  npm: medusa-plugin-tolgee-ttnhat-dev
+  repository: https://github.com/Nathan-Nhat/medusa-plugin-tolgee
+  lastPublish: '2025-05-17T09:01:42.173Z'
+  active: false
+- slug: o2s-medusa-plugin-assets-services
+  name:
+    en:
+      label: Assets & Services
+      shortDescription: Manage customer assets and services
+      description: Manage customer assets and services
+    ru:
+      label: Assets & Services
+      shortDescription: Управление активами и услугами клиентов
+      description: Управление активами и услугами клиентов
+  category: other
+  author: o2s
+  npm: '@o2s/medusa-plugin-assets-services'
+  lastPublish: '2025-05-29T06:49:49.738Z'
+  active: true
+- slug: medusa-plugin-meilisearch-categories-products
+  name:
+    en:
+      label: MeiliSearch
+      shortDescription: Open-source search engine for your store
+      description: Open-source search engine for your store
+    ru:
+      label: MeiliSearch
+      shortDescription: Открытый поисковый движок для вашего магазина
+      description: Открытый поисковый движок для вашего магазина
+  category: search
+  author: tubaapollo
+  npm: medusa-plugin-meilisearch-categories-products
+  repository: https://github.com/rokmohar/medusa-plugin-meilisearch
+  lastPublish: '2025-08-26T20:03:35.219Z'
+  active: false
+- slug: svene-marketplace
+  name:
+    en:
+      label: Multivendor Marketplace
+      shortDescription: Manage multiple vendors in one store
+      description: Manage multiple vendors in one store
+    ru:
+      label: Multivendor Marketplace
+      shortDescription: Управление несколькими продавцами в одном магазине
+      description: Управление несколькими продавцами в одном магазине
+  category: other
+  author: svene
+  npm: '@svene/marketplace'
+  lastPublish: '2025-05-14T23:11:15.588Z'
+  active: false
+- slug: vymalo-medusa-argon2
+  name:
+    en:
+      label: Argon2
+      shortDescription: Add advanced Argon2 password hashing
+      description: Add advanced Argon2 password hashing
+    ru:
+      label: Argon2
+      shortDescription: Добавить расширенное хеширование паролей Argon2
+      description: Добавить расширенное хеширование паролей Argon2
+  category: auth
+  author: vymalo
+  npm: '@vymalo/medusa-argon2'
+  repository: https://github.com/vymalo/medusajs
+  lastPublish: '2025-05-29T22:53:14.611Z'
+  active: true
+- slug: medusa-plugin-tolgee-ttnhat-production
+  name:
+    en:
+      label: Tolgee
+      shortDescription: Translate store content seamlessly with Tolgee
+      description: Translate store content seamlessly with Tolgee
+    ru:
+      label: Tolgee
+      shortDescription: Удобно переводите контент магазина с Tolgee
+      description: Удобно переводите контент магазина с Tolgee
+  category: cms
+  author: ttnhat61
+  npm: medusa-plugin-tolgee-ttnhat-production
+  repository: https://github.com/Nathan-Nhat/medusa-plugin-tolgee
+  lastPublish: '2025-05-17T09:00:57.099Z'
+  active: false
+- slug: medusa-plugin-tolgee-ttnhat
+  name:
+    en:
+      label: Tolgee
+      shortDescription: Translate store content seamlessly with Tolgee
+      description: Translate store content seamlessly with Tolgee
+    ru:
+      label: Tolgee
+      shortDescription: Удобно переводите контент магазина с Tolgee
+      description: Удобно переводите контент магазина с Tolgee
+  category: cms
+  author: ttnhat61
+  npm: medusa-plugin-tolgee-ttnhat
+  repository: https://github.com/Nathan-Nhat/medusa-plugin-tolgee
+  lastPublish: '2025-05-16T21:49:19.980Z'
+  active: false
+- slug: medusa-payment-upnance
+  name:
+    en:
+      label: Upnance
+      shortDescription: Accept payments with Upnance
+      description: Accept payments with Upnance
+    ru:
+      label: Upnance
+      shortDescription: Принимайте платежи через Upnance
+      description: Принимайте платежи через Upnance
+  category: other
+  author: upnance
+  npm: medusa-payment-upnance
+  lastPublish: '2025-06-16T08:15:11.983Z'
+  active: false
+- slug: rsc-labs-medusa-square-payment
+  name:
+    en:
+      label: Square
+      shortDescription: Accept payments with Square
+      description: Accept payments with Square
+    ru:
+      label: Square
+      shortDescription: Принимайте платежи через Square
+      description: Принимайте платежи через Square
+  category: payment
+  author: rsc-labs
+  npm: '@rsc-labs/medusa-square-payment'
+  repository: https://github.com/RSC-Labs/medusa-square-payment
+  lastPublish: '2025-05-27T12:22:37.517Z'
+  active: true
+- slug: yanchesky-medusa-smsapi
+  name:
+    en:
+      label: SMSAPI
+      shortDescription: Send SMS with optional test mode for safe messaging
+      description: Send SMS with optional test mode for safe messaging
+    ru:
+      label: SMSAPI
+      shortDescription: Отправляйте SMS с опциональным тестовым режимом для безопасной отправки сообщений
+      description: Отправляйте SMS с опциональным тестовым режимом для безопасной отправки сообщений
+  category: notification
+  author: yanchesky
+  npm: '@yanchesky/medusa-smsapi'
+  repository: https://github.com/yanchesky/medusa-smsapi
+  lastPublish: '2025-09-19T09:04:38.916Z'
+  active: true
+- slug: medusa-plugin-attachment
+  name:
+    en:
+      label: PDF Attachment
+      shortDescription: Generate PDF with templates
+      description: Generate PDF with templates
+    ru:
+      label: PDF Attachment
+      shortDescription: Генерируйте PDF с шаблонами
+      description: Генерируйте PDF с шаблонами
+  category: other
+  author: steelrazor47
+  npm: medusa-plugin-attachment
+  lastPublish: '2025-05-09T23:07:49.770Z'
+  active: true
+- slug: my-medusa-variant-images
+  name:
+    en:
+      label: Variant Images
+      shortDescription: Organize and bulk-upload variant images in Medusa
+      description: Organize and bulk-upload variant images in Medusa
+    ru:
+      label: Variant Images
+      shortDescription: Organize and bulk-upload variant images in Medusa
+      description: Organize and bulk-upload variant images in Medusa
+  category: other
+  author: teodora-s
+  npm: my-medusa-variant-images
+  repository: https://github.com/Betanoir/medusa-variant-images
+  lastPublish: '2025-05-12T14:00:38.056Z'
+  active: false
+- slug: medusa-colissimo
+  name:
+    en:
+      label: Colissimo
+      shortDescription: Enable Colissimo shipping with tracking
+      description: Enable Colissimo shipping with tracking
+    ru:
+      label: Colissimo
+      shortDescription: Включите доставку Colissimo с отслеживанием
+      description: Включите доставку Colissimo с отслеживанием
+  category: shipping
+  author: gx2-studio
+  npm: medusa-colissimo
+  lastPublish: '2026-01-23T13:01:28.989Z'
+  active: true
+- slug: civicagrotech-medusa-plugin-makesend
+  name:
+    en:
+      label: Makesend
+      shortDescription: Enable Bangkok-area same-day delivery
+      description: Enable Bangkok-area same-day delivery
+    ru:
+      label: Makesend
+      shortDescription: Включите доставку день-в-день по Бангкоку
+      description: Включите доставку день-в-день по Бангкоку
+  category: other
+  author: civicagrotech
+  npm: '@civicagrotech/medusa-plugin-makesend'
+  lastPublish: '2026-02-11T07:06:15.710Z'
+  active: true
+- slug: celhajjami96-mollie-payments-medusa
+  name:
+    en:
+      label: Mollie
+      shortDescription: Accept payments easily with Mollie
+      description: Accept payments easily with Mollie
+    ru:
+      label: Mollie
+      shortDescription: Принимайте платежи легко с Mollie
+      description: Принимайте платежи легко с Mollie
+  category: payment
+  author: celhajjami96
+  npm: '@celhajjami96/mollie-payments-medusa'
+  repository: https://github.com/variablevic/mollie-payments-medusa
+  lastPublish: '2026-01-29T12:05:26.508Z'
+  active: false
+- slug: jenisn-medusa-paypal
+  name:
+    en:
+      label: PayPal
+      shortDescription: Use PayPal as payment provider
+      description: Use PayPal as payment provider
+    ru:
+      label: Paypal
+      shortDescription: Используйте Paypal в качестве платежного провайдера
+      description: Используйте Paypal в качестве платежного провайдера
+  category: payment
+  author: jenisn
+  npm: '@jenisn/medusa-paypal'
+  repository: https://github.com/alphabite-dev/medusa-paypal
+  lastPublish: '2026-01-27T07:01:45.080Z'
+  active: false
+- slug: minimall-io-medusa-plugin-adyen
+  name:
+    en:
+      label: Adyen
+      shortDescription: Accept Adyen payments
+      description: Accept Adyen payments
+    ru:
+      label: Adyen
+      shortDescription: Принимайте платежи с Adyen
+      description: Принимайте платежи с Adyen
+  category: payment
+  author: minimall-io
+  npm: '@minimall.io/medusa-plugin-adyen'
+  repository: https://github.com/minimall-io/medusa-plugins
+  lastPublish: '2026-02-04T06:42:06.327Z'
+  active: true
+- slug: shritej-intuio-my-plugin
+  name:
+    en:
+      label: My plugin
+      shortDescription: A starter for Medusa plugins.
+      description: A starter for Medusa plugins.
+    ru:
+      label: My plugin
+      shortDescription: A starter for Medusa plugins.
+      description: A starter for Medusa plugins.
+  category: other
+  author: shritej-intuio
+  npm: '@shritej.intuio/my-plugin'
+  lastPublish: '2025-09-19T03:59:38.902Z'
+  active: false
+- slug: shritej-intuio-customizable
+  name:
+    en:
+      label: Customizable
+      shortDescription: A starter for Medusa plugins.
+      description: A starter for Medusa plugins.
+    ru:
+      label: Customizable
+      shortDescription: A starter for Medusa plugins.
+      description: A starter for Medusa plugins.
+  category: other
+  author: shritej-intuio
+  npm: '@shritej.intuio/customizable'
+  lastPublish: '2025-09-17T13:16:12.699Z'
+  active: false
