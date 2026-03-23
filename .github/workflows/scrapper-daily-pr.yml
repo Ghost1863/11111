@@ -12,21 +12,16 @@ permissions:
 jobs:
   scrape-and-pr:
     runs-on: ubuntu-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Enable Corepack and set Yarn version
+      - name: Enable Corepack
         run: |
-          npm install -g corepack
           corepack enable
           corepack prepare yarn@4.9.2 --activate
-          which yarn
-          yarn --version
-          
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
