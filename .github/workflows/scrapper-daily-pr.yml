@@ -26,8 +26,11 @@ jobs:
           cache: yarn
           cache-dependency-path: packages/scrapper/yarn.lock
 
-      - name: Enable Corepack
-        run: corepack enable
+      - name: Enable Corepack and set Yarn version
+        run: |
+          corepack enable
+          corepack prepare yarn@4.9.2 --activate
+          yarn --version  # Проверяем, что версия правильная
 
       - name: Install scraper dependencies
         working-directory: packages/scrapper
