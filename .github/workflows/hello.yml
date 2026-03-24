@@ -3,10 +3,6 @@ name: Build and Deploy to Multiple Servers
 on:
   push:
     branches: [ main ]
-    paths:
-      - 'packages/**'
-      - 'Dockerfile'
-      - '.dockerignore'
   workflow_dispatch:
 
 jobs:
