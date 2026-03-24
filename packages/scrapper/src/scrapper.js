@@ -377,7 +377,7 @@ ${readmeBody}
   const testMarkerPath = join(OUTPUT_DIR, "plugins", ".scraper-test-marker.txt");
   await fs.writeFile(testMarkerPath, `Last scrape: ${new Date().toISOString()}\n`, "utf8");
   console.log("   - .scraper-test-marker.txt (test marker)");
-
+  
   // Test marker: write/update root YML file to test PR flow for content/*.yml
   const ymlTestMarkerPath = join(OUTPUT_DIR, "scraper-test-marker.yml");
   const ymlTestMarker = {
@@ -386,8 +386,6 @@ ${readmeBody}
   };
   await fs.writeFile(ymlTestMarkerPath, yaml.dump(ymlTestMarker), "utf8");
   console.log("   - scraper-test-marker.yml (test yml marker)");
-
-  
 
   
 }
