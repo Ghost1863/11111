@@ -374,9 +374,10 @@ ${readmeBody}
   console.log(`   - plugins/[slug]/en.md and ru.md for each plugin`);
 
  // Test marker: write last scrape timestamp to test workflow changes
+
   const testMarkerPath = join(OUTPUT_DIR, "plugins", "scraper-test-marker.txt");
   await fs.writeFile(testMarkerPath, `Last scrape: ${new Date().toISOString()}\n`, "utf8");
-  console.log("   - .scraper-test-marker.txt (test marker)");
+  console.log("   - scraper-test-marker.txt (test marker)");
   
 
 
