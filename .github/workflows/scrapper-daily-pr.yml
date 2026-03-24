@@ -90,7 +90,7 @@ jobs:
             exit 0
           fi
 
-          git commit -m "chore(content): daily plugin content update"
+          git commit -m "chore: daily plugin content update"
           git pull origin main --rebase
           git push origin HEAD:main
 
