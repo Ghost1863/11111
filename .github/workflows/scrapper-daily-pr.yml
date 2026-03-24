@@ -17,6 +17,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Generate GitHub App token
+        id: app_token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.GH_APP_ID }}
+          private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
+
       - name: Enable Corepack
         run: |
           corepack enable
@@ -77,11 +84,20 @@ jobs:
 
       - name: Commit plugin files directly to main
         if: steps.check_changes.outputs.changed == 'true' && steps.classify_changes.outputs.only_plugins == 'true'
+        env:
+          APP_TOKEN: ${{ steps.app_token.outputs.token }}
         run: |
           set -euo pipefail
 
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [[ -z "${APP_TOKEN:-}" ]]; then
+            echo "GitHub App token is not available"
+            exit 1
+          fi
+
+          git config user.name "gorgo-bot"
+          git config user.email "gorgo-bot@users.noreply.github.com"
+
+          git remote set-url origin "https://x-access-token:${APP_TOKEN}@github.com/${{ github.repository }}.git"
 
           git add packages/site/content/plugins
 
@@ -98,7 +114,7 @@ jobs:
         if: steps.check_changes.outputs.changed == 'true' && steps.classify_changes.outputs.has_content_yml == 'true'
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ steps.app_token.outputs.token }}
           commit-message: 'chore: daily scraped content update'
           title: 'chore: daily scraped content update'
           body: |
