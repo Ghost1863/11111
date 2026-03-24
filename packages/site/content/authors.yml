@@ -1,102 +1,127 @@
-- id: gorgo
-  name:
-    en: Gorgo
-    ru: Gorgo
-  active: true
 - id: rokmohar
   name:
     en: Rokmohar
     ru: Rokmohar
   active: true
-- id: lambdacurry
+- id: easypayment
   name:
-    en: Lambda Curry
-    ru: Lambda Curry
-  active: true
-- id: webbers
-  name:
-    en: Webbers
-    ru: Webbers
-  active: true
-- id: perseidesjs
-  name:
-    en: Perseides
-    ru: Perseides
-  active: true
-- id: devx-commerce
-  name:
-    en: Devx Commerce
-    ru: Devx Commerce
-  active: true
-- id: betanoir
-  name:
-    en: Betanoir
-    ru: Betanoir
-  active: true
-- id: mitchellston
-  name:
-    en: Mitchellston
-    ru: Mitchellston
-  active: true
-- id: variablevic
-  name:
-    en: Variable Vic
-    ru: Variable Vic
-  active: true
-- id: alphabite
-  name:
-    en: Alphabite
-    ru: Alphabite
+    en: Easypayment
+    ru: Easypayment
   active: true
 - id: techlabi
   name:
     en: Techlabi
     ru: Techlabi
   active: true
-- id: codee-sh
+- id: lambdacurry
   name:
-    en: Codee-sh
-    ru: Codee-sh
+    en: Lambdacurry
+    ru: Lambdacurry
+  active: true
+- id: devx-commerce
+  name:
+    en: Devx-commerce
+    ru: Devx-commerce
+  active: true
+- id: variablevic
+  name:
+    en: Variablevic
+    ru: Variablevic
+  active: true
+- id: perseidesjs
+  name:
+    en: Perseidesjs
+    ru: Perseidesjs
   active: true
 - id: steelrazor47
   name:
     en: Steelrazor47
     ru: Steelrazor47
   active: true
-- id: sergkudinov
+- id: betanoir
   name:
-    en: Sergei Kudinov
-    ru: Sergei Kudinov
-  active: true
-- id: nicogorga
-  name:
-    en: Nicolas Gorga
-    ru: Sergei Kudinov
+    en: Betanoir
+    ru: Betanoir
   active: true
 - id: rsc-labs
   name:
-    en: RSC Labs
-    ru: RSC Labs
+    en: Rsc-labs
+    ru: Rsc-labs
   active: true
-- id: fatheroctber
+- id: kepatz
   name:
-    en: Nikita Mishnev
-    ru: Nikita Mishnev
+    en: Kepatz
+    ru: Kepatz
   active: true
-- id: sgfgov
+- id: alphabite
   name:
-    en: Sgfgov
-    ru: Sgfgov
+    en: Alphabite
+    ru: Alphabite
+  active: true
+- id: codee-sh
+  name:
+    en: Codee-sh
+    ru: Codee-sh
+  active: true
+- id: igorppbr
+  name:
+    en: Igorppbr
+    ru: Igorppbr
+  active: true
+- id: gx2-studio
+  name:
+    en: Gx2-studio
+    ru: Gx2-studio
   active: true
 - id: alpha-solutions
   name:
     en: Alpha-solutions
     ru: Alpha-solutions
   active: true
-- id: authorizenet
+- id: geovannygil
   name:
-    en: Authorizenet
-    ru: Authorizenet
+    en: Geovannygil
+    ru: Geovannygil
+  active: true
+- id: webbers
+  name:
+    en: Webbers
+    ru: Webbers
+  active: true
+- id: tax1driver
+  name:
+    en: Tax1driver
+    ru: Tax1driver
+  active: true
+- id: gmisoftware
+  name:
+    en: Gmisoftware
+    ru: Gmisoftware
+  active: true
+- id: eancarr
+  name:
+    en: Eancarr
+    ru: Eancarr
+  active: true
+- id: nicogorga
+  name:
+    en: Nicogorga
+    ru: Nicogorga
+  active: true
+- id: sgfgov
+  name:
+    en: Sgfgov
+    ru: Sgfgov
+  active: true
+- id: vymalo
+  name:
+    en: Vymalo
+    ru: Vymalo
+  active: true
+- id: sergkudinov
+  name:
+    en: Sergkudinov
+    ru: Sergkudinov
   active: true
 - id: blegaut
   name:
@@ -105,88 +130,128 @@
   active: true
 - id: linearcommerce
   name:
-    en: Linearloop
-    ru: Linearloop
+    en: Linearcommerce
+    ru: Linearcommerce
   active: true
-- id: igorppbr
+- id: celhajjami96
   name:
-    en: Igor Ludgero Miura
-    ru: Igor Ludgero Miura
-  active: true
-- id: joey-d
-  name:
-    en: Joey-d
-    ru: Joey-d
-  active: true
-- id: crza69
-  name:
-    en: Crza69
-    ru: Crza69
-  active: true
-- id: theodaguier
-  name:
-    en: Theodaguier
-    ru: Theodaguier
-  active: true
-- id: m-nasser-m
-  name:
-    en: M-nasser-m
-    ru: M-nasser-m
-  active: true
-- id: gmisoftware
-  name:
-    en: GMI Software
-    ru: GMI Software
-  active: true
-- id: bram-hammer
-  name:
-    en: Bram-hammer
-    ru: Bram-hammer
-  active: true
-- id: eancarr
-  name:
-    en: Ean Carr
-    ru: Ean Carr
-  active: true
-- id: teodorasiljanoska
-  name:
-    en: Teodorasiljanoska
-    ru: Teodorasiljanoska
-  active: true
-- id: nakamotosbutt
-  name:
-    en: Nakamotosbutt
-    ru: Nakamotosbutt
-  active: true
-- id: vymalo
-  name:
-    en: Vymalo
-    ru: Vymalo
-  active: true
-- id: connectycube
-  name:
-    en: Connectycube
-    ru: Connectycube
-  active: true
-- id: zosmaai
-  name:
-    en: Zosmaai
-    ru: Zosmaai
-  active: true
-- id: u11d
-  name:
-    en: U11d
-    ru: U11d
+    en: Celhajjami96
+    ru: Celhajjami96
   active: true
 - id: civicagrotech
   name:
     en: Civicagrotech
     ru: Civicagrotech
   active: true
+- id: novamoney
+  name:
+    en: Novamoney
+    ru: Novamoney
+  active: true
+- id: mitchellston
+  name:
+    en: Mitchellston
+    ru: Mitchellston
+  active: true
+- id: gorgo
+  name:
+    en: Gorgo
+    ru: Gorgo
+  active: true
+- id: u11d
+  name:
+    en: U11d
+    ru: U11d
+  active: true
+- id: authorizenet
+  name:
+    en: Authorizenet
+    ru: Authorizenet
+  active: true
+- id: theodaguier
+  name:
+    en: Theodaguier
+    ru: Theodaguier
+  active: true
+- id: zosmaai
+  name:
+    en: Zosmaai
+    ru: Zosmaai
+  active: true
+- id: bram-hammer
+  name:
+    en: Bram-hammer
+    ru: Bram-hammer
+  active: true
+- id: fatheroctber
+  name:
+    en: Fatheroctber
+    ru: Fatheroctber
+  active: true
+- id: nakamotosbutt
+  name:
+    en: Nakamotosbutt
+    ru: Nakamotosbutt
+  active: true
+- id: crza69
+  name:
+    en: Crza69
+    ru: Crza69
+  active: true
+- id: fmacmak
+  name:
+    en: Fmacmak
+    ru: Fmacmak
+  active: true
+- id: tubaapollo
+  name:
+    en: Tubaapollo
+    ru: Tubaapollo
+  active: true
+- id: connectycube
+  name:
+    en: Connectycube
+    ru: Connectycube
+  active: true
+- id: m-nasser-m
+  name:
+    en: M-nasser-m
+    ru: M-nasser-m
+  active: true
+- id: sam-ael
+  name:
+    en: Sam-ael
+    ru: Sam-ael
+  active: true
 - id: hicity
   name:
     en: Hicity
     ru: Hicity
+  active: true
+- id: shritej-intuio
+  name:
+    en: Shritej-intuio
+    ru: Shritej-intuio
+  active: true
+- id: loadreverb
+  name:
+    en: Loadreverb
+    ru: Loadreverb
+  active: true
+- id: teodora-s
+  name:
+    en: Teodora-s
+    ru: Teodora-s
+  active: true
+- id: ttnhat61
+  name:
+    en: Ttnhat61
+    ru: Ttnhat61
+  active: true
+- id: minimall-io
+  name:
+    en: Minimall-io
+    ru: Minimall-io
   active: true
 - id: siddarthan007
   name:
@@ -198,40 +263,30 @@
     en: Relewise
     ru: Relewise
   active: true
-- id: sradevski
+- id: joey-d
   name:
-    en: Sradevski
-    ru: Sradevski
+    en: Joey-d
+    ru: Joey-d
   active: true
-- id: asyntai
+- id: jenisn
   name:
-    en: Asyntai
-    ru: Asyntai
-  active: true
-- id: npmjetski
-  name:
-    en: Npmjetski
-    ru: Npmjetski
-  active: true
-- id: meduline
-  name:
-    en: Meduline
-    ru: Meduline
+    en: Jenisn
+    ru: Jenisn
   active: true
 - id: roho7
   name:
     en: Roho7
     ru: Roho7
   active: true
-- id: devretail
+- id: upnance
   name:
-    en: Devretail
-    ru: Devretail
+    en: Upnance
+    ru: Upnance
   active: true
-- id: nackamoto
+- id: npmjetski
   name:
-    en: Nackamoto
-    ru: Nackamoto
+    en: Npmjetski
+    ru: Npmjetski
   active: true
 - id: deroswent
   name:
@@ -243,114 +298,58 @@
     en: Gaborottlik
     ru: Gaborottlik
   active: true
-- id: ttnhat61
+- id: asyntai
   name:
-    en: Ttnhat61
-    ru: Ttnhat61
+    en: Asyntai
+    ru: Asyntai
   active: true
 - id: o2s
   name:
     en: O2s
     ru: O2s
   active: true
-- id: tubaapollo
+- id: nackamoto
   name:
-    en: Tubaapollo
-    ru: Tubaapollo
+    en: Nackamoto
+    ru: Nackamoto
+  active: true
+- id: sradevski
+  name:
+    en: Sradevski
+    ru: Sradevski
   active: true
 - id: svene
   name:
     en: Svene
     ru: Svene
   active: true
-- id: upnance
+- id: teodorasiljanoska
   name:
-    en: Upnance
-    ru: Upnance
+    en: Teodorasiljanoska
+    ru: Teodorasiljanoska
   active: true
-- id: yanchesky
+- id: meduline
   name:
-    en: Yanchesky
-    ru: Yanchesky
-  active: true
-- id: gx2-studio
-  name:
-    en: Gx2-studio
-    ru: Gx2-studio
-  active: true
-- id: celhajjami96
-  name:
-    en: Celhajjami96
-    ru: Celhajjami96
-  active: true
-- id: jenisn
-  name:
-    en: Jenisn
-    ru: Jenisn
-  active: true
-- id: minimall-io
-  name:
-    en: Minimall-io
-    ru: Minimall-io
-  active: true
-- id: teodora-s
-  name:
-    en: Teodora-s
-    ru: Teodora-s
-  active: true
-- id: shritej-intuio
-  name:
-    en: Shritej-intuio
-    ru: Shritej-intuio
-  active: true
-- id: easypayment
-  name:
-    en: Easypayment
-    ru: Easypayment
-  active: true
-- id: kepatz
-  name:
-    en: Kepatz
-    ru: Kepatz
-  active: true
-- id: geovannygil
-  name:
-    en: Geovannygil
-    ru: Geovannygil
-  active: true
-- id: tax1driver
-  name:
-    en: Tax1driver
-    ru: Tax1driver
-  active: true
-- id: novamoney
-  name:
-    en: Novamoney
-    ru: Novamoney
-  active: true
-- id: fmacmak
-  name:
-    en: Fmacmak
-    ru: Fmacmak
-  active: true
-- id: sam-ael
-  name:
-    en: Sam-ael
-    ru: Sam-ael
-  active: true
-- id: loadreverb
-  name:
-    en: Loadreverb
-    ru: Loadreverb
+    en: Meduline
+    ru: Meduline
   active: true
 - id: peterborodatyy
   name:
     en: Peterborodatyy
     ru: Peterborodatyy
   active: true
+- id: devretail
+  name:
+    en: Devretail
+    ru: Devretail
+  active: true
+- id: yanchesky
+  name:
+    en: Yanchesky
+    ru: Yanchesky
+  active: true
 - id: upsidelab
   name:
     en: Upsidelab
     ru: Upsidelab
   active: true
-  22222222222222222222222222222222222222222222
