@@ -288,11 +288,6 @@
     en: Jenisn
     ru: Jenisn
   active: true
-- id: samael-bio
-  name:
-    en: Samael-bio
-    ru: Samael-bio
-  active: true
 - id: minimall-io
   name:
     en: Minimall-io
@@ -307,4 +302,54 @@
   name:
     en: Shritej-intuio
     ru: Shritej-intuio
+  active: true
+- id: easypayment
+  name:
+    en: Easypayment
+    ru: Easypayment
+  active: true
+- id: kepatz
+  name:
+    en: Kepatz
+    ru: Kepatz
+  active: true
+- id: geovannygil
+  name:
+    en: Geovannygil
+    ru: Geovannygil
+  active: true
+- id: tax1driver
+  name:
+    en: Tax1driver
+    ru: Tax1driver
+  active: true
+- id: novamoney
+  name:
+    en: Novamoney
+    ru: Novamoney
+  active: true
+- id: fmacmak
+  name:
+    en: Fmacmak
+    ru: Fmacmak
+  active: true
+- id: sam-ael
+  name:
+    en: Sam-ael
+    ru: Sam-ael
+  active: true
+- id: loadreverb
+  name:
+    en: Loadreverb
+    ru: Loadreverb
+  active: true
+- id: peterborodatyy
+  name:
+    en: Peterborodatyy
+    ru: Peterborodatyy
+  active: true
+- id: upsidelab
+  name:
+    en: Upsidelab
+    ru: Upsidelab
   active: true
