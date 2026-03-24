@@ -12,7 +12,7 @@
   author: rokmohar
   npm: '@rokmohar/medusa-plugin-meilisearch'
   repository: https://github.com/rokmohar/medusa-plugin-meilisearch
-  lastPublish: '2026-01-26T12:41:33.964Z'
+  lastPublish: '2026-03-19T16:06:11.789Z'
   active: true
 - slug: lambdacurry-medusa-payment-braintree
   name:
@@ -28,7 +28,7 @@
   author: lambdacurry
   npm: '@lambdacurry/medusa-payment-braintree'
   repository: https://github.com/lambda-curry/medusa-plugins
-  lastPublish: '2026-01-16T22:57:45.006Z'
+  lastPublish: '2026-03-12T20:08:13.568Z'
   active: true
 - slug: webbers-pay-payments-medusa
   name:
@@ -90,7 +90,7 @@
   author: lambdacurry
   npm: '@lambdacurry/medusa-product-reviews'
   repository: https://github.com/lambda-curry/medusa-plugins
-  lastPublish: '2025-09-04T22:04:07.174Z'
+  lastPublish: '2026-02-25T23:20:40.082Z'
   active: true
 - slug: devx-commerce-strapi
   name:
@@ -139,22 +139,6 @@
   repository: https://github.com/mitchellston/medusa-dhl-ecommerce-fulfillment
   lastPublish: '2026-01-11T16:43:49.191Z'
   active: true
-- slug: medusa-payu-payment-plugin
-  name:
-    en:
-      label: PayU
-      shortDescription: Enable payments with PayU
-      description: Enable payments with PayU
-    ru:
-      label: PayU
-      shortDescription: Включите оплату через PayU
-      description: Включите оплату через PayU
-  category: payment
-  author: samael-bio
-  npm: medusa-payu-payment-plugin
-  repository: https://github.com/SAM-AEL/medusa-payu-payment-plugin
-  lastPublish: '2026-01-25T18:01:02.174Z'
-  active: true
 - slug: alphabite-medusa-storyblok
   name:
     en:
@@ -200,7 +184,7 @@
   category: other
   author: techlabi
   npm: '@techlabi/medusa-marketplace-plugin'
-  lastPublish: '2026-02-02T14:23:41.421Z'
+  lastPublish: '2026-03-24T08:51:42.956Z'
   active: true
 - slug: codee-sh-medusa-plugin-automations
   name:
@@ -216,7 +200,7 @@
   author: codee-sh
   npm: '@codee-sh/medusa-plugin-automations'
   repository: https://github.com/codee-sh/medusa-plugin-automations
-  lastPublish: '2026-01-02T13:26:11.651Z'
+  lastPublish: '2026-02-26T13:06:16.114Z'
   active: true
 - slug: medusa-plugin-tolgee
   name:
@@ -248,7 +232,7 @@
   author: sergkudinov
   npm: medusa-payment-yookassa
   repository: https://github.com/sergkudinov/medusa-payment-yookassa
-  lastPublish: '2025-12-18T13:06:50.739Z'
+  lastPublish: '2026-03-23T17:02:24.558Z'
   active: true
 - slug: variablevic-google-analytics-medusa
   name:
@@ -310,7 +294,7 @@
   author: gorgo
   npm: '@gorgo/medusa-payment-tkassa'
   repository: https://github.com/gorgojs/medusa-plugins
-  lastPublish: '2026-02-02T11:30:14.854Z'
+  lastPublish: '2026-03-06T20:00:30.711Z'
   active: true
 - slug: webbers-mailgun-notification-medusa
   name:
@@ -462,8 +446,12 @@
       description: Create and manage product feeds in YML (Yandex Market Language) format
     ru:
       label: Яндекс YML-фид
-      shortDescription: Создавайте и управляйте фидами товаров в формате YML (Yandex Market Language)
-      description: Создавайте и управляйте фидами товаров в формате YML (Yandex Market Language)
+      shortDescription: >-
+        Создавайте и управляйте фидами товаров в формате YML (Yandex Market
+        Language)
+      description: >-
+        Создавайте и управляйте фидами товаров в формате YML (Yandex Market
+        Language)
   category: other
   author: gorgo
   npm: '@gorgo/medusa-feed-yandex'
@@ -564,7 +552,7 @@
   author: igorppbr
   npm: '@igorppbr/medusa-v2-gcp-file-provider'
   repository: https://github.com/igorppbr/medusa-gcp-storage
-  lastPublish: '2025-09-22T20:01:44.118Z'
+  lastPublish: '2026-03-18T19:12:56.468Z'
   active: true
 - slug: joey-d-mollie-payments-medusa
   name:
@@ -675,7 +663,7 @@
   author: gorgo
   npm: '@gorgo/medusa-fulfillment-apiship'
   repository: https://github.com/gorgojs/medusa-plugins
-  lastPublish: '2026-02-02T11:29:50.739Z'
+  lastPublish: '2026-03-06T20:20:41.691Z'
   active: true
 - slug: gmisoftware-przelewy24-payments-medusa
   name:
@@ -691,7 +679,7 @@
   author: gmisoftware
   npm: '@gmisoftware/przelewy24-payments-medusa'
   repository: https://github.com/gmi-software/przelewy24-medusa
-  lastPublish: '2026-02-10T06:57:44.534Z'
+  lastPublish: '2026-03-13T09:08:23.466Z'
   active: true
 - slug: m-nasser-m-medusa-payment-vodafone-cash-manual
   name:
@@ -834,7 +822,7 @@
   author: zosmaai
   npm: '@zosmaai/medusa-v2-gcp-file-provider'
   repository: https://github.com/SensaLab/medusa-gcp-storage
-  lastPublish: '2026-01-03T00:27:34.853Z'
+  lastPublish: '2026-02-28T19:20:58.590Z'
   active: false
 - slug: devx-commerce-passwordless-x-custom-jw-mayave
   name:
@@ -962,7 +950,7 @@
   author: rokmohar
   npm: '@rokmohar/medusa-plugin-unsend'
   repository: https://github.com/rokmohar/medusa-plugin-unsend
-  lastPublish: '2025-07-25T07:25:01.411Z'
+  lastPublish: '2026-03-20T17:45:45.597Z'
   active: true
 - slug: vymalo-medusa-minio
   name:
@@ -1070,7 +1058,7 @@
       shortDescription: Организуйте и загружайте варианты изображений в Medusa
       description: Организуйте и загружайте варианты изображений в Medusa
   category: other
-  author: teodorasiljanoska
+  author: teodora-s
   npm: medusa-variant-images-updated
   repository: https://github.com/teodorasiljanoska/medusa-variant-images
   lastPublish: '2025-07-11T12:48:52.516Z'
@@ -1289,7 +1277,7 @@
   category: other
   author: o2s
   npm: '@o2s/medusa-plugin-assets-services'
-  lastPublish: '2025-05-29T06:49:49.738Z'
+  lastPublish: '2026-03-19T19:59:25.143Z'
   active: true
 - slug: medusa-plugin-meilisearch-categories-products
   name:
@@ -1409,8 +1397,12 @@
       description: Send SMS with optional test mode for safe messaging
     ru:
       label: SMSAPI
-      shortDescription: Отправляйте SMS с опциональным тестовым режимом для безопасной отправки сообщений
-      description: Отправляйте SMS с опциональным тестовым режимом для безопасной отправки сообщений
+      shortDescription: >-
+        Отправляйте SMS с опциональным тестовым режимом для безопасной отправки
+        сообщений
+      description: >-
+        Отправляйте SMS с опциональным тестовым режимом для безопасной отправки
+        сообщений
   category: notification
   author: yanchesky
   npm: '@yanchesky/medusa-smsapi'
@@ -1476,7 +1468,7 @@
   category: other
   author: civicagrotech
   npm: '@civicagrotech/medusa-plugin-makesend'
-  lastPublish: '2026-02-11T07:06:15.710Z'
+  lastPublish: '2026-02-27T08:11:23.250Z'
   active: true
 - slug: celhajjami96-mollie-payments-medusa
   name:
@@ -1556,3 +1548,198 @@
   npm: '@shritej.intuio/customizable'
   lastPublish: '2025-09-17T13:16:12.699Z'
   active: false
+- slug: easypayment-medusa-paypal
+  name:
+    en:
+      label: Paypal
+      shortDescription: Industry-standard PayPal integration for Medusa v2
+      description: Industry-standard PayPal integration for Medusa v2
+    ru:
+      label: Paypal
+      shortDescription: Industry-standard PayPal integration for Medusa v2
+      description: Industry-standard PayPal integration for Medusa v2
+  category: payment
+  author: easypayment
+  npm: '@easypayment/medusa-paypal'
+  repository: https://github.com/easypaymentplugins/medusa-paypal
+  lastPublish: '2026-03-23T13:10:43.353Z'
+  active: true
+- slug: medusa-strapi-plugin
+  name:
+    en:
+      label: Strapi plugin
+      shortDescription: Medusa plugin for Strapi as CMS
+      description: Medusa plugin for Strapi as CMS
+    ru:
+      label: Strapi plugin
+      shortDescription: Medusa plugin for Strapi as CMS
+      description: Medusa plugin for Strapi as CMS
+  category: cms
+  author: kepatz
+  npm: medusa-strapi-plugin
+  lastPublish: '2026-03-08T18:29:40.804Z'
+  active: true
+- slug: medusa-payment-cybersource
+  name:
+    en:
+      label: Cybersource
+      shortDescription: >-
+        CyberSource payment provider for Medusa.js v2 with Flex Microform (PCI
+        DSS SAQ-A)
+      description: >-
+        CyberSource payment provider for Medusa.js v2 with Flex Microform (PCI
+        DSS SAQ-A)
+    ru:
+      label: Cybersource
+      shortDescription: >-
+        CyberSource payment provider for Medusa.js v2 with Flex Microform (PCI
+        DSS SAQ-A)
+      description: >-
+        CyberSource payment provider for Medusa.js v2 with Flex Microform (PCI
+        DSS SAQ-A)
+  category: payment
+  author: geovannygil
+  npm: medusa-payment-cybersource
+  repository: https://github.com/Eleven-Estudio/medusa-payment-cybersource
+  lastPublish: '2026-03-13T20:27:47.082Z'
+  active: true
+- slug: medusa-tpay
+  name:
+    en:
+      label: Tpay
+      shortDescription: Medusa tpay Payment Provider
+      description: Medusa tpay Payment Provider
+    ru:
+      label: Tpay
+      shortDescription: Medusa tpay Payment Provider
+      description: Medusa tpay Payment Provider
+  category: payment
+  author: tax1driver
+  npm: medusa-tpay
+  lastPublish: '2026-02-26T11:57:44.065Z'
+  active: true
+- slug: tax1driver-medusa-payu
+  name:
+    en:
+      label: Payu
+      shortDescription: Medusa PayU Payment Provider
+      description: Medusa PayU Payment Provider
+    ru:
+      label: Payu
+      shortDescription: Medusa PayU Payment Provider
+      description: Medusa PayU Payment Provider
+  category: payment
+  author: tax1driver
+  npm: '@tax1driver/medusa-payu'
+  lastPublish: '2026-02-26T11:57:32.198Z'
+  active: true
+- slug: novamoney-nova-pay
+  name:
+    en:
+      label: Nova pay
+      shortDescription: A plugin to use Nova.Pay on Medusa.
+      description: A plugin to use Nova.Pay on Medusa.
+    ru:
+      label: Nova pay
+      shortDescription: A plugin to use Nova.Pay on Medusa.
+      description: A plugin to use Nova.Pay on Medusa.
+  category: payment
+  author: novamoney
+  npm: '@novamoney/nova-pay'
+  lastPublish: '2026-03-09T14:06:05.348Z'
+  active: true
+- slug: medusa-paystack-plugin
+  name:
+    en:
+      label: Paystack plugin
+      shortDescription: >-
+        Medusa v2 Paystack plugin with per-store publishable key settings,
+        storefront helpers, and an optional verified payment provider.
+      description: >-
+        Medusa v2 Paystack plugin with per-store publishable key settings,
+        storefront helpers, and an optional verified payment provider.
+    ru:
+      label: Paystack plugin
+      shortDescription: >-
+        Medusa v2 Paystack plugin with per-store publishable key settings,
+        storefront helpers, and an optional verified payment provider.
+      description: >-
+        Medusa v2 Paystack plugin with per-store publishable key settings,
+        storefront helpers, and an optional verified payment provider.
+  category: payment
+  author: fmacmak
+  npm: medusa-paystack-plugin
+  lastPublish: '2026-03-13T07:47:39.395Z'
+  active: true
+- slug: sam-ael-medusa-plugin-payu
+  name:
+    en:
+      label: Payu
+      shortDescription: PayU India payment gateway integration for Medusa v2 with redirect flow.
+      description: PayU India payment gateway integration for Medusa v2 with redirect flow.
+    ru:
+      label: Payu
+      shortDescription: PayU India payment gateway integration for Medusa v2 with redirect flow.
+      description: PayU India payment gateway integration for Medusa v2 with redirect flow.
+  category: payment
+  author: sam-ael
+  npm: '@sam-ael/medusa-plugin-payu'
+  repository: https://github.com/SAM-AEL/medusa-payu-payment-plugin
+  lastPublish: '2026-03-10T18:19:09.003Z'
+  active: true
+- slug: loadreverb-przelewy24-payments-medusa
+  name:
+    en:
+      label: Przelewy24 payments medusa
+      shortDescription: >-
+        Przelewy24 (P24) payment integration plugin for Medusa e-commerce with
+        BLIK, cards, and general P24 support.
+      description: >-
+        Przelewy24 (P24) payment integration plugin for Medusa e-commerce with
+        BLIK, cards, and general P24 support.
+    ru:
+      label: Przelewy24 payments medusa
+      shortDescription: >-
+        Przelewy24 (P24) payment integration plugin for Medusa e-commerce with
+        BLIK, cards, and general P24 support.
+      description: >-
+        Przelewy24 (P24) payment integration plugin for Medusa e-commerce with
+        BLIK, cards, and general P24 support.
+  category: payment
+  author: loadreverb
+  npm: '@loadreverb/przelewy24-payments-medusa'
+  repository: https://github.com/loadreverb/przelewy24-medusa
+  lastPublish: '2026-02-17T00:01:11.762Z'
+  active: true
+- slug: medusa-plugin-elasticsearch
+  name:
+    en:
+      label: Elasticsearch
+      shortDescription: Elasticsearch search plugin for Medusa v2
+      description: Elasticsearch search plugin for Medusa v2
+    ru:
+      label: Elasticsearch
+      shortDescription: Elasticsearch search plugin for Medusa v2
+      description: Elasticsearch search plugin for Medusa v2
+  category: search
+  author: peterborodatyy
+  npm: medusa-plugin-elasticsearch
+  repository: https://github.com/peterborodatyy/medusa-plugin-elasticsearch
+  lastPublish: '2026-03-22T23:39:03.338Z'
+  active: true
+- slug: upsidelab-medusa-plugin-enthusiast
+  name:
+    en:
+      label: Enthusiast
+      shortDescription: Medusa plugin for Enthusiast integration.
+      description: Medusa plugin for Enthusiast integration.
+    ru:
+      label: Enthusiast
+      shortDescription: Medusa plugin for Enthusiast integration.
+      description: Medusa plugin for Enthusiast integration.
+  category: other
+  author: upsidelab
+  npm: '@upsidelab/medusa-plugin-enthusiast'
+  repository: https://github.com/upsidelab/medusa-plugin-enthusiast
+  lastPublish: '2026-03-18T12:58:40.386Z'
+  active: true
