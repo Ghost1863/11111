@@ -89,7 +89,7 @@ jobs:
           cache: "yarn"
 
       - name: Install deps
-        run: yarn install --immutable
+        run: yarn install 
 
       - name: Build package
         run: yarn workspace @gorgo/${{ matrix.package }} build
@@ -129,7 +129,7 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - name: Install deps
-        run: yarn install --immutable
+        run: yarn install 
 
       - name: Create npmrc
         run: |
