@@ -39,7 +39,8 @@ jobs:
           PKGS="$(echo "$CHANGED" | awk -F/ '/^packages\/[^/]+\// {print $2}' | sort -u)"
 
           #test------------------------------------------------------------------------------------------------------------
-          PKGS="$(find packages -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort -u)"
+          #PKGS="$(find packages -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort -u)"
+          PKGS=medusa-feed-yandex
           #test------------------------------------------------------------------------------------------------------------
 
           if [ -z "$PKGS" ]; then
