@@ -1,0 +1,101 @@
+---
+title: "Начало работы с ApiShip для Medusa"
+description: "В этом документе вы узнаете, как установить и настроить провайдер фулфилмента ApiShip для Medusa"
+---
+
+# {frontmatter.title}
+
+В этом документе вы узнаете, как установить и настроить провайдер фулфилмента ApiShip для Medusa.
+
+## Требования
+
+- Medusa v2.7.1 или новее
+- Node.js v20 или новее
+- Аккаунт ApiShip – [зарегистрируйтесь или войдите](https://a.apiship.ru)
+
+## Установка
+
+```bash
+yarn add @gorgo/medusa-fulfillment-apiship
+# или
+npm install @gorgo/medusa-fulfillment-apiship
+```
+
+## Настройка
+
+Добавьте конфигурацию провайдера в файл `medusa-config.js` в приложении Medusa Admin:
+
+```ts
+// ...
+module.exports = defineConfig({
+  // ...
+  modules: [
+    {
+      resolve: "@medusajs/medusa/fulfillment",
+      options: {
+        providers: [
+          {
+            resolve: "@gorgo/medusa-fulfillment-apiship/providers/fulfillment-apiship",
+            id: "apiship",
+            options: {
+              token: process.env.APISHIP_TOKEN,
+              isTest: false,
+              settings: {
+                defaultSenderSettings: {
+                  countryCode: "RU",
+                  addressString: "Москва, улица Лестева, 19к1, офис 306",
+                  contactName: "Иванов Иван Иванович",
+                  phone: "+79999999900",
+                },
+                connectionsMap: {
+                  cdek: "36253",
+                },
+                defaultProductSizes: {
+                  length: 10,
+                  width: 10,
+                  height: 10,
+                  weight: 20,
+                },
+                deliveryCostVat: -1,
+                isCod: false,
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
+  plugins: [
+    // ...
+    {
+      resolve: "@gorgo/medusa-fulfillment-apiship",
+      options: {},
+    },
+  ],
+})
+```
+
+Добавьте переменные окружения из личного кабинета ApiShip:
+
+```text
+APISHIP_TOKEN=supersecret
+```
+
+## Параметры провайдера
+
+| Параметр | Описание | Обязательный | По умолчанию |
+| --- | --- | --- | --- |
+| `token` | API-токен ApiShip. | Да | – |
+| `isTest` | Включение тестового режима для запросов к ApiShip API. | Нет | `false` |
+| `settings` | Объект настроек провайдера. | Да | – |
+| `settings.defaultSenderSettings.countryCode` | Код страны отправителя. | Да | – |
+| `settings.defaultSenderSettings.addressString` | Полный адрес отправителя одной строкой. | Да | – |
+| `settings.defaultSenderSettings.contactName` | ФИО контактного лица отправителя. | Да | – |
+| `settings.defaultSenderSettings.phone` | Телефон контактного лица отправителя. | Да | – |
+| `settings.connectionsMap` | Сопоставление ключей провайдеров доставки с ID подключений в ApiShip. | Нет | – |
+| `settings.defaultProductSizes.length` | Длина товара по умолчанию. | Нет | – |
+| `settings.defaultProductSizes.width` | Ширина товара по умолчанию. | Нет | – |
+| `settings.defaultProductSizes.height` | Высота товара по умолчанию. | Нет | – |
+| `settings.defaultProductSizes.weight` | Вес товара по умолчанию. | Нет | – |
+| `settings.deliveryCostVat` | Ставка НДС на доставку:<br />- `-1` — Без НДС<br />- `0` — 0%<br />- `5` — 5%<br />- `7` — 7%<br />- `10` — 10%<br />- `20` — 20%<br />- `22` — 22% | Да | – |
+| `settings.isCod` | Включение наложенного платежа (C.O.D.) для создаваемых заказов. | Нет | `false` |

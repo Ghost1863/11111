@@ -1,0 +1,41 @@
+---
+title: "Getting Started with 1C:Enterprise ERP for Medusa"
+description: "In this document, you'll learn how to install and configure the 1C:Enterprise integration plugin for Medusa."
+---
+
+# {frontmatter.title}
+
+In this document, you'll learn how to install and configure the 1C:Enterprise integration plugin for Medusa.
+
+## Prerequisites
+
+- Medusa server v2.8.0 or later
+- Node.js v20 or later
+
+## Installation
+
+```bash
+yarn add @gorgo/medusa-1c
+# or
+npm install @gorgo/medusa-1c
+```
+
+## Configuration
+
+Add the plugin configuration in your `medusa-config.js` file of the Medusa admin application:
+
+```ts
+# ...
+module.exports = defineConfig({
+  # ...
+  plugins: [
+    # ...
+    {
+      resolve: "@gorgo/medusa-1c",
+      options: {}
+    }
+  ],
+})
+```
+
+> 🚧 Integration is currently under development, see the [Roadmap](./#roadmap).
