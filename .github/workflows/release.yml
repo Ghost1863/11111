@@ -85,19 +85,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Enable Corepack
-        run: corepack enable
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: "yarn"
 
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Activate Yarn
+        run: corepack prepare yarn@4.9.2 --activate
+
       - name: Install deps
-        run: yarn install --immutable
+        run: corepack yarn install --immutable
 
       - name: Build package
-        run: yarn workspace @gorgo/${{ matrix.package }} build
+        run: corepack yarn workspace @gorgo/${{ matrix.package }} build
 
       - name: Run tests if script exists
         shell: bash
@@ -107,7 +111,7 @@ jobs:
           HAS_TEST=$(jq -r '.scripts.test // empty' "$PKG_DIR/package.json" | wc -c)
           if [ "$HAS_TEST" -gt 0 ]; then
             echo "Running tests for $PKG_DIR"
-            yarn workspace @gorgo/${{ matrix.package }} test
+            corepack yarn workspace @gorgo/${{ matrix.package }} test
           else
             echo "No test script in $PKG_DIR/package.json, skipping tests."
           fi
@@ -124,17 +128,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Enable Corepack
-        run: corepack enable
-
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: "yarn"
           registry-url: "https://registry.npmjs.org"
 
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Activate Yarn
+        run: corepack prepare yarn@4.9.2 --activate
+
       - name: Install deps
-        run: yarn install 
+        run: corepack yarn install --immutable
 
       - name: Create npmrc
         run: |
@@ -148,7 +155,7 @@ jobs:
       - name: Release with Changesets
         uses: changesets/action@v1
         with:
-          publish: yarn changeset publish
+          publish: corepack yarn changeset publish
           commit: "chore: version packages"
           title: "chore: version packages"
         env:
