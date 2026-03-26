@@ -81,6 +81,8 @@ jobs:
       DATABASE_URL: postgres://postgres:postgres@localhost:5432/medusa_test
       POSTGRES_URL: postgres://postgres:postgres@localhost:5432/medusa_test
       NODE_ENV: test
+      YARN_ENABLE_GLOBAL_CACHE: "false"
+      YARN_CACHE_FOLDER: .yarn/cache
 
     steps:
       - uses: actions/checkout@v4
@@ -101,6 +103,7 @@ jobs:
         with:
           path: |
             .yarn/cache
+            .yarn/unplugged
             .yarn/install-state.gz
           key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock', '.yarnrc.yml') }}
           restore-keys: |
@@ -133,6 +136,9 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+    env:
+      YARN_ENABLE_GLOBAL_CACHE: "false"
+      YARN_CACHE_FOLDER: .yarn/cache
 
     steps:
       - uses: actions/checkout@v4
@@ -153,6 +159,7 @@ jobs:
         with:
           path: |
             .yarn/cache
+            .yarn/unplugged
             .yarn/install-state.gz
           key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock', '.yarnrc.yml') }}
           restore-keys: |
