@@ -1,6 +1,13 @@
 name: Daily Medusa Version Update
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - "examples/**"
+      - "packages/**"
+      - "scripts/update.sh"
+      - ".github/workflows/medusa-daily-update.yml"
   schedule:
     - cron: "0 6 * * *"
   workflow_dispatch:
