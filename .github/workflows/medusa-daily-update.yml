@@ -97,7 +97,7 @@ jobs:
               const head = encodeURIComponent(`${owner}:${branchName}`)
               const options = {
                 hostname: 'api.github.com',
-                path: `/repos/${owner}/${repo}/pulls?state=open&head=${head}&base=main`,
+                path: `/repos/${owner}/${repo}/pulls?state=open&head=${head}`,
                 method: 'GET',
                 headers: {
                   'User-Agent': 'medusa-daily-version-update',
