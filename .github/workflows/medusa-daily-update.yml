@@ -172,6 +172,7 @@ jobs:
               psql "postgresql://postgres:postgres@localhost:5432/postgres" -c "CREATE DATABASE \"${db_name}\";"
             fi
 
+            # Generate .env for development/migrations
             cat > "${medusa_dir}/.env" <<EOF
           DATABASE_URL=postgres://postgres:postgres@localhost:5432/${db_name}
           STORE_CORS=http://localhost:8000
@@ -180,6 +181,15 @@ jobs:
           JWT_SECRET=supersecret
           COOKIE_SECRET=supersecret
           EOF
+
+            # Generate .env.test for integration tests (NODE_ENV=test)
+            # Copy template and fill in DB credentials with Postgres service password
+            if [ -f "${medusa_dir}/.env.template" ]; then
+              cat "${medusa_dir}/.env.template" > "${medusa_dir}/.env.test"
+              # Ensure DATABASE_URL has the password
+              sed -i 's|postgres://postgres@localhost/|postgres://postgres:postgres@localhost/|g' "${medusa_dir}/.env.test"
+              sed -i 's|DB_PASSWORD=.*|DB_PASSWORD=postgres|g' "${medusa_dir}/.env.test"
+            fi
           done
 
       - name: Run update script from repository root
