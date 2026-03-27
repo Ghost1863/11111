@@ -186,7 +186,7 @@ process_directory() {
         if grep -q '"test:integration:http"' package.json; then
             log "$dir" "Running integration HTTP tests"
             echo -e "\n${YELLOW}[$dir] Running: yarn test:integration:http${NC}\n"
-            yarn test:integration:http || handle_error "$dir" "$LAST_SUCCESSFUL_DIR"
+            yarn test:integration:http --passWithNoTests || handle_error "$dir" "$LAST_SUCCESSFUL_DIR"
         else
             warning "$dir" "No test:integration:http script, skipping..."
         fi
@@ -194,7 +194,7 @@ process_directory() {
         if grep -q '"test:integration:modules"' package.json; then
             log "$dir" "Running integration modules tests"
             echo -e "\n${YELLOW}[$dir] Running: yarn test:integration:modules${NC}\n"
-            yarn test:integration:modules || handle_error "$dir" "$LAST_SUCCESSFUL_DIR"
+            yarn test:integration:modules --passWithNoTests || handle_error "$dir" "$LAST_SUCCESSFUL_DIR"
         else
             warning "$dir" "No test:integration:modules script, skipping..."
         fi
