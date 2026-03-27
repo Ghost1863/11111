@@ -1,0 +1,38 @@
+name: Create 1.txt PR
+
+on:
+	workflow_dispatch:
+
+jobs:
+	create-pr:
+		runs-on: ubuntu-latest
+		permissions:
+			contents: write
+			pull-requests: write
+
+		steps:
+			- name: Checkout
+				uses: actions/checkout@v4
+
+			- name: Generate GitHub App token
+				id: app-token
+				uses: actions/create-github-app-token@v1
+				with:
+					app-id: ${{ secrets.GH_APP_ID }}
+					private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
+
+			- name: Create 1.txt in repository root
+				shell: bash
+				run: |
+					set -euo pipefail
+					echo "updated by workflow $(date -u +'%Y-%m-%dT%H:%M:%SZ')" > 1.txt
+
+			- name: Create pull request
+				uses: peter-evans/create-pull-request@v6
+				with:
+					token: ${{ steps.app-token.outputs.token }}
+					branch: chore/create-1-txt
+					delete-branch: true
+					commit-message: "chore: create 1.txt"
+					title: "chore: create 1.txt"
+					body: "Automated PR: create/update 1.txt in repository root."
