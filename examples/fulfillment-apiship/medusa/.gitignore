@@ -25,6 +25,5 @@ build
 
 .medusa
 
-yarn.lock
 .yalc
 yalc.lock
