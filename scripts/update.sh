@@ -177,15 +177,6 @@ process_directory() {
         log "$dir" "Building project"
         echo -e "\n${YELLOW}[$dir] Running: yarn build${NC}\n"
         yarn build || handle_error "$dir" "$LAST_SUCCESSFUL_DIR"
-
-        # In GitHub Actions, avoid pg defaulting to OS user (runner) for test DB creation.
-        if [ "${GITHUB_ACTIONS:-}" = "true" ]; then
-            export DB_NAME="${DB_NAME:-$(grep -E '^DB_NAME=' .env.template 2>/dev/null | head -n 1 | cut -d= -f2-)}"
-            export DB_NAME="${DB_NAME:-medusa_ci}"
-            export DB_USERNAME="postgres"
-            export DB_PASSWORD="postgres"
-            export DATABASE_URL="postgres://${DB_USERNAME}:${DB_PASSWORD}@localhost:5432/${DB_NAME}"
-        fi
         
         # Run integration tests if scripts exist in package.json.
         if grep -q '"test:integration:http"' package.json; then

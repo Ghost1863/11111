@@ -203,6 +203,15 @@ jobs:
 
       - name: Run update script from repository root
         shell: bash
+        env:
+          DB_USERNAME: postgres
+          DB_PASSWORD: postgres
+          DB_HOST: localhost
+          DB_PORT: "5432"
+          PGUSER: postgres
+          PGPASSWORD: postgres
+          PGHOST: localhost
+          PGPORT: "5432"
         run: |
           set -euo pipefail
           chmod +x ./scripts/update.sh
