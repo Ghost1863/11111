@@ -14,6 +14,9 @@ jobs:
   check_medusa_version:
     name: Check Medusa version increment
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
     outputs:
       should_update: ${{ steps.versions.outputs.should_update }}
       new_medusa_version: ${{ steps.versions.outputs.new_medusa_version }}
@@ -114,7 +117,7 @@ jobs:
                 res.on('end', () => {
                   try {
                     if (res.statusCode !== 200) {
-                      console.log(`PR lookup skipped: GitHub API status ${res.statusCode}`)
+                      console.log(`PR lookup skipped: GitHub API status ${res.statusCode}, body: ${body}`)
                       resolve(false)
                       return
                     }
