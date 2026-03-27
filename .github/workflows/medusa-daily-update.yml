@@ -46,6 +46,7 @@ jobs:
           node - <<'NODE'
           const fs = require('fs')
           const path = require('path')
+          const https = require('https')
 
           const target = process.env.TARGET_VERSION
           const examplesDir = path.join(process.cwd(), 'examples')
@@ -82,18 +83,71 @@ jobs:
 
           const currentVersions = sorted.join(',')
           const outdatedExamples = outdated.join(',')
-          const shouldUpdate = outdated.length > 0 ? 'true' : 'false'
 
-          const outPath = process.env.GITHUB_OUTPUT
-          fs.appendFileSync(outPath, `new_medusa_version=${target}\n`)
-          fs.appendFileSync(outPath, `current_versions=${currentVersions}\n`)
-          fs.appendFileSync(outPath, `should_update=${shouldUpdate}\n`)
-          fs.appendFileSync(outPath, `outdated_examples=${outdatedExamples}\n`)
+          const [owner, repo] = (process.env.GITHUB_REPOSITORY || '/').split('/')
+          const branchName = `chore/medusa-update-v${target}`
 
-          console.log(`Current versions: ${currentVersions}`)
-          console.log(`Target version: ${target}`)
-          console.log(`Should update: ${shouldUpdate}`)
-          console.log(`Outdated examples: ${outdatedExamples}`)
+          function hasOpenPrForBranch() {
+            return new Promise((resolve) => {
+              if (!owner || !repo || !process.env.GITHUB_TOKEN) {
+                resolve(false)
+                return
+              }
+
+              const head = encodeURIComponent(`${owner}:${branchName}`)
+              const options = {
+                hostname: 'api.github.com',
+                path: `/repos/${owner}/${repo}/pulls?state=open&head=${head}&base=main`,
+                method: 'GET',
+                headers: {
+                  'User-Agent': 'medusa-daily-version-update',
+                  'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`,
+                  'Accept': 'application/vnd.github+json',
+                },
+              }
+
+              const req = https.request(options, (res) => {
+                let body = ''
+                res.on('data', (chunk) => {
+                  body += chunk
+                })
+                res.on('end', () => {
+                  try {
+                    if (res.statusCode !== 200) {
+                      console.log(`PR lookup skipped: GitHub API status ${res.statusCode}`)
+                      resolve(false)
+                      return
+                    }
+
+                    const prs = JSON.parse(body)
+                    resolve(Array.isArray(prs) && prs.length > 0)
+                  } catch {
+                    resolve(false)
+                  }
+                })
+              })
+
+              req.on('error', () => resolve(false))
+              req.end()
+            })
+          }
+
+          ;(async () => {
+            const openPrExists = await hasOpenPrForBranch()
+            const shouldUpdate = outdated.length > 0 && !openPrExists ? 'true' : 'false'
+
+            const outPath = process.env.GITHUB_OUTPUT
+            fs.appendFileSync(outPath, `new_medusa_version=${target}\n`)
+            fs.appendFileSync(outPath, `current_versions=${currentVersions}\n`)
+            fs.appendFileSync(outPath, `should_update=${shouldUpdate}\n`)
+            fs.appendFileSync(outPath, `outdated_examples=${outdatedExamples}\n`)
+
+            console.log(`Current versions: ${currentVersions}`)
+            console.log(`Target version: ${target}`)
+            console.log(`Outdated examples: ${outdatedExamples}`)
+            console.log(`Open PR for ${branchName}: ${openPrExists}`)
+            console.log(`Should update: ${shouldUpdate}`)
+          })()
           NODE
 
   update_test_and_pr:
