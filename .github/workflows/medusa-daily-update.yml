@@ -1,19 +1,12 @@
 name: Daily Medusa Version Update
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "examples/**"
-      - "packages/**"
-      - "scripts/update.sh"
-      - ".github/workflows/medusa-daily-update.yml"
   schedule:
     - cron: "0 6 * * *"
   workflow_dispatch:
     inputs:
       medusa_version:
-        description: "Optional Medusa version override (e.g. 2.13.2)"
+        description: "Optional Medusa version override"
         required: false
         type: string
 
@@ -48,22 +41,31 @@ jobs:
             TARGET_VERSION="$(npm view @medusajs/medusa version)"
           fi
 
-          CURRENT_VERSIONS="$(node - <<'NODE'
+          ANALYSIS="$(node - "$TARGET_VERSION" <<'NODE'
           const fs = require('fs')
           const path = require('path')
 
+          const target = process.argv[2]
           const examplesDir = path.join(process.cwd(), 'examples')
           const versions = new Set()
+          const outdated = []
 
           for (const entry of fs.readdirSync(examplesDir, { withFileTypes: true })) {
             if (!entry.isDirectory()) continue
+
             const pkgPath = path.join(examplesDir, entry.name, 'medusa', 'package.json')
             if (!fs.existsSync(pkgPath)) continue
 
             const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'))
             const version = pkg.dependencies && pkg.dependencies['@medusajs/medusa']
-            if (version) {
-              versions.add(version.replace(/^[~^]/, ''))
+            const normalized = version ? version.replace(/^[~^]/, '') : null
+
+            if (normalized) {
+              versions.add(normalized)
+            }
+
+            if (!normalized || normalized !== target) {
+              outdated.push(entry.name)
             }
           }
 
@@ -76,50 +78,20 @@ jobs:
             return 0
           })
 
-          process.stdout.write(sorted.join(','))
+          const currentVersions = sorted.join(',')
+          const outdatedExamples = outdated.join(',')
+          const shouldUpdate = outdated.length > 0 ? 'true' : 'false'
+
+          process.stdout.write(`CURRENT_VERSIONS=${currentVersions}\n`)
+          process.stdout.write(`OUTDATED_EXAMPLES=${outdatedExamples}\n`)
+          process.stdout.write(`SHOULD_UPDATE=${shouldUpdate}\n`)
           NODE
           )"
 
-          OUTDATED_EXAMPLES="$(node - "$TARGET_VERSION" <<'NODE'
-          const fs = require('fs')
-          const path = require('path')
-
-          const target = process.argv[2]
-          const examplesDir = path.join(process.cwd(), 'examples')
-          const outdated = []
-
-          for (const entry of fs.readdirSync(examplesDir, { withFileTypes: true })) {
-            if (!entry.isDirectory()) continue
-            const pkgPath = path.join(examplesDir, entry.name, 'medusa', 'package.json')
-            if (!fs.existsSync(pkgPath)) continue
-
-            const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'))
-            const version = pkg.dependencies && pkg.dependencies['@medusajs/medusa']
-            const normalized = version ? version.replace(/^[~^]/, '') : null
-
-            if (!normalized || normalized !== target) {
-              outdated.push(entry.name)
-            }
-          }
-
-          process.stdout.write(outdated.join(','))
-          NODE
-          )"
-
-          SHOULD_UPDATE="$(node - "$TARGET_VERSION" "$CURRENT_VERSIONS" <<'NODE'
-          const target = process.argv[2]
-          const currentCsv = process.argv[3]
-          const current = currentCsv ? currentCsv.split(',').filter(Boolean) : []
-
-          if (current.length === 0) {
-            process.stdout.write('true')
-            process.exit(0)
-          }
-
-          const hasDifferent = current.some((v) => v !== target)
-          process.stdout.write(hasDifferent ? 'true' : 'false')
-          NODE
-          )"
+          while IFS= read -r line; do
+            [ -z "$line" ] && continue
+            eval "$line"
+          done <<< "$ANALYSIS"
 
           echo "new_medusa_version=$TARGET_VERSION" >> "$GITHUB_OUTPUT"
           echo "current_versions=$CURRENT_VERSIONS" >> "$GITHUB_OUTPUT"
@@ -158,11 +130,6 @@ jobs:
 
     env:
       NODE_ENV: test
-      STORE_CORS: http://localhost:8000
-      ADMIN_CORS: http://localhost:7000
-      AUTH_CORS: http://localhost:7000
-      JWT_SECRET: supersecret
-      COOKIE_SECRET: supersecret
       YARN_ENABLE_GLOBAL_CACHE: "false"
       YARN_CACHE_FOLDER: .yarn/cache
 
@@ -188,9 +155,30 @@ jobs:
         run: |
           set -euo pipefail
 
-          for template in examples/*/medusa/.env.template; do
-            medusa_dir="$(dirname "$template")"
-            db_name="$(grep -E '^DB_NAME=' "$template" | head -n 1 | cut -d= -f2-)"
+          OUTDATED_EXAMPLES="${{ needs.check_medusa_version.outputs.outdated_examples }}"
+          if [ -z "$OUTDATED_EXAMPLES" ]; then
+            echo "No outdated examples list returned; skipping env/db preparation."
+            exit 0
+          fi
+
+          IFS=',' read -ra EXAMPLES <<< "$OUTDATED_EXAMPLES"
+          for example in "${EXAMPLES[@]}"; do
+            [ -z "$example" ] && continue
+
+            medusa_dir="examples/${example}/medusa"
+            template="${medusa_dir}/.env.template"
+
+            if [ ! -d "${medusa_dir}" ]; then
+              echo "Directory ${medusa_dir} not found, skipping"
+              continue
+            fi
+
+            db_name=""
+            if [ -f "$template" ]; then
+              db_name="$(grep -E '^DB_NAME=' "$template" | head -n 1 | cut -d= -f2-)"
+            elif [ -f "${medusa_dir}/.env.test" ]; then
+              db_name="$(grep -E '^DB_NAME=' "${medusa_dir}/.env.test" | head -n 1 | cut -d= -f2-)"
+            fi
 
             if [ -z "$db_name" ]; then
               db_name="medusa_ci"
@@ -215,8 +203,8 @@ jobs:
             # Prefer committed .env.test values; fall back to template if missing.
             if [ -f "${medusa_dir}/.env.test" ]; then
               echo "Using committed .env.test for ${medusa_dir}"
-            elif [ -f "${medusa_dir}/.env.template" ]; then
-              cat "${medusa_dir}/.env.template" > "${medusa_dir}/.env.test"
+            elif [ -f "$template" ]; then
+              cat "$template" > "${medusa_dir}/.env.test"
             else
               echo "No .env.test or .env.template found for ${medusa_dir}, skipping"
               continue
@@ -250,26 +238,11 @@ jobs:
           TARGET_VERSION="${{ needs.check_medusa_version.outputs.new_medusa_version }}"
           OUTDATED_EXAMPLES="${{ needs.check_medusa_version.outputs.outdated_examples }}"
 
-          if [ -z "$OUTDATED_EXAMPLES" ]; then
-            echo "No outdated examples list returned; skipping update step."
-            exit 0
-          fi
-
           IFS=',' read -ra EXAMPLES <<< "$OUTDATED_EXAMPLES"
           for example in "${EXAMPLES[@]}"; do
             [ -z "$example" ] && continue
             echo "Updating example: $example"
             ./scripts/update.sh "$TARGET_VERSION" "$example" --single
-          done
-
-      - name: Build all Medusa plugin packages
-        shell: bash
-        run: |
-          set -euo pipefail
-          for pkg in packages/medusa-*/package.json; do
-            pkg_name=$(node -p "require('./${pkg}').name")
-            echo "Building ${pkg_name}"
-            corepack yarn workspace "${pkg_name}" build
           done
 
       - name: Create pull request
@@ -289,7 +262,6 @@ jobs:
               - Postgres DB preparation for examples
               - `./scripts/update.sh <version> <example> --single` for outdated examples only
               - Build + integration tests only for outdated examples
-              - Build of all plugin packages in `packages/`
           branch: chore/medusa-update-v${{ needs.check_medusa_version.outputs.new_medusa_version }}
           delete-branch: true
           labels: |
