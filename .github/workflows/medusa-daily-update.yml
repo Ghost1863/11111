@@ -186,9 +186,13 @@ jobs:
             # Copy template and fill in DB credentials with Postgres service password
             if [ -f "${medusa_dir}/.env.template" ]; then
               cat "${medusa_dir}/.env.template" > "${medusa_dir}/.env.test"
-              # Ensure DATABASE_URL has the password
+              # Add DB_PASSWORD if not present
+              if ! grep -q "^DB_PASSWORD=" "${medusa_dir}/.env.test"; then
+                echo "DB_PASSWORD=postgres" >> "${medusa_dir}/.env.test"
+              fi
+              # Replace $DB_NAME placeholder with actual database name and add password
+              sed -i "s|\$DB_NAME|${db_name}|g" "${medusa_dir}/.env.test"
               sed -i 's|postgres://postgres@localhost/|postgres://postgres:postgres@localhost/|g' "${medusa_dir}/.env.test"
-              sed -i 's|DB_PASSWORD=.*|DB_PASSWORD=postgres|g' "${medusa_dir}/.env.test"
             fi
           done
 
