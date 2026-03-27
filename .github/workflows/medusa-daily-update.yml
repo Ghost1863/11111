@@ -41,11 +41,13 @@ jobs:
             TARGET_VERSION="$(npm view @medusajs/medusa version)"
           fi
 
-          ANALYSIS="$(node - "$TARGET_VERSION" <<'NODE'
+          export TARGET_VERSION
+
+          node - <<'NODE'
           const fs = require('fs')
           const path = require('path')
 
-          const target = process.argv[2]
+          const target = process.env.TARGET_VERSION
           const examplesDir = path.join(process.cwd(), 'examples')
           const versions = new Set()
           const outdated = []
@@ -82,26 +84,17 @@ jobs:
           const outdatedExamples = outdated.join(',')
           const shouldUpdate = outdated.length > 0 ? 'true' : 'false'
 
-          process.stdout.write(`CURRENT_VERSIONS=${currentVersions}\n`)
-          process.stdout.write(`OUTDATED_EXAMPLES=${outdatedExamples}\n`)
-          process.stdout.write(`SHOULD_UPDATE=${shouldUpdate}\n`)
+          const outPath = process.env.GITHUB_OUTPUT
+          fs.appendFileSync(outPath, `new_medusa_version=${target}\n`)
+          fs.appendFileSync(outPath, `current_versions=${currentVersions}\n`)
+          fs.appendFileSync(outPath, `should_update=${shouldUpdate}\n`)
+          fs.appendFileSync(outPath, `outdated_examples=${outdatedExamples}\n`)
+
+          console.log(`Current versions: ${currentVersions}`)
+          console.log(`Target version: ${target}`)
+          console.log(`Should update: ${shouldUpdate}`)
+          console.log(`Outdated examples: ${outdatedExamples}`)
           NODE
-          )"
-
-          while IFS= read -r line; do
-            [ -z "$line" ] && continue
-            eval "$line"
-          done <<< "$ANALYSIS"
-
-          echo "new_medusa_version=$TARGET_VERSION" >> "$GITHUB_OUTPUT"
-          echo "current_versions=$CURRENT_VERSIONS" >> "$GITHUB_OUTPUT"
-          echo "should_update=$SHOULD_UPDATE" >> "$GITHUB_OUTPUT"
-          echo "outdated_examples=$OUTDATED_EXAMPLES" >> "$GITHUB_OUTPUT"
-
-          echo "Current versions: $CURRENT_VERSIONS"
-          echo "Target version: $TARGET_VERSION"
-          echo "Should update: $SHOULD_UPDATE"
-          echo "Outdated examples: $OUTDATED_EXAMPLES"
 
   update_test_and_pr:
     name: Update Medusa, run tests, create PR
@@ -166,22 +159,22 @@ jobs:
             [ -z "$example" ] && continue
 
             medusa_dir="examples/${example}/medusa"
-            template="${medusa_dir}/.env.template"
+            test_env="${medusa_dir}/.env.test"
 
             if [ ! -d "${medusa_dir}" ]; then
               echo "Directory ${medusa_dir} not found, skipping"
               continue
             fi
 
-            db_name=""
-            if [ -f "$template" ]; then
-              db_name="$(grep -E '^DB_NAME=' "$template" | head -n 1 | cut -d= -f2-)"
-            elif [ -f "${medusa_dir}/.env.test" ]; then
-              db_name="$(grep -E '^DB_NAME=' "${medusa_dir}/.env.test" | head -n 1 | cut -d= -f2-)"
+            if [ ! -f "$test_env" ]; then
+              echo "No .env.test found for ${medusa_dir}"
+              exit 1
             fi
 
+            db_name="$(get_env_value "$test_env" "DB_NAME")"
             if [ -z "$db_name" ]; then
-              db_name="medusa_ci"
+              echo "DB_NAME is missing in ${test_env}"
+              exit 1
             fi
 
             exists=$(psql "postgresql://postgres:postgres@localhost:5432/postgres" -tAc "SELECT 1 FROM pg_database WHERE datname='${db_name}'")
@@ -189,48 +182,11 @@ jobs:
               psql "postgresql://postgres:postgres@localhost:5432/postgres" -c "CREATE DATABASE \"${db_name}\";"
             fi
 
-            # Generate .env for development/migrations
-            cat > "${medusa_dir}/.env" <<EOF
-          DATABASE_URL=postgres://postgres:postgres@localhost:5432/${db_name}
-          STORE_CORS=http://localhost:8000
-          ADMIN_CORS=http://localhost:7000
-          AUTH_CORS=http://localhost:7000
-          JWT_SECRET=supersecret
-          COOKIE_SECRET=supersecret
-          EOF
-
-            # Generate .env.test for integration tests (NODE_ENV=test)
-            # Prefer committed .env.test values; fall back to template if missing.
-            if [ -f "${medusa_dir}/.env.test" ]; then
-              echo "Using committed .env.test for ${medusa_dir}"
-            elif [ -f "$template" ]; then
-              cat "$template" > "${medusa_dir}/.env.test"
-            else
-              echo "No .env.test or .env.template found for ${medusa_dir}, skipping"
-              continue
-            fi
-
-            # Normalize DB fields for CI postgres service.
-            sed -i "s|\$DB_NAME|${db_name}|g" "${medusa_dir}/.env.test"
-            sed -i 's|postgres://postgres@localhost/|postgres://postgres:postgres@localhost/|g' "${medusa_dir}/.env.test"
-            grep -q "^DB_USERNAME=" "${medusa_dir}/.env.test" || echo "DB_USERNAME=postgres" >> "${medusa_dir}/.env.test"
-            grep -q "^DB_PASSWORD=" "${medusa_dir}/.env.test" || echo "DB_PASSWORD=postgres" >> "${medusa_dir}/.env.test"
-            grep -q "^DB_NAME=" "${medusa_dir}/.env.test" || echo "DB_NAME=${db_name}" >> "${medusa_dir}/.env.test"
-            sed -i 's/^DB_USERNAME=$/DB_USERNAME=postgres/' "${medusa_dir}/.env.test"
-            sed -i 's/^DB_PASSWORD=$/DB_PASSWORD=postgres/' "${medusa_dir}/.env.test"
+            cp "$test_env" "${medusa_dir}/.env"
           done
 
       - name: Run update script only for outdated examples
         shell: bash
-        env:
-          DB_USERNAME: postgres
-          DB_PASSWORD: postgres
-          DB_HOST: localhost
-          DB_PORT: "5432"
-          PGUSER: postgres
-          PGPASSWORD: postgres
-          PGHOST: localhost
-          PGPORT: "5432"
         run: |
           set -euo pipefail
           chmod +x ./scripts/update.sh
@@ -245,11 +201,18 @@ jobs:
             ./scripts/update.sh "$TARGET_VERSION" "$example" --single
           done
 
+      - name: Generate GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.GH_APP_ID }}
+          private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
+
       - name: Create pull request
         id: cpr
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ steps.app-token.outputs.token }}
           commit-message: "chore: update Medusa to v${{ needs.check_medusa_version.outputs.new_medusa_version }}"
           title: "chore: update Medusa to v${{ needs.check_medusa_version.outputs.new_medusa_version }}"
           body: |
@@ -278,6 +241,7 @@ jobs:
         if: failure()
         uses: actions/github-script@v7
         with:
+          github-token: ${{ steps.app-token.outputs.token }}
           script: |
             const owner = context.repo.owner
             const repo = context.repo.repo
