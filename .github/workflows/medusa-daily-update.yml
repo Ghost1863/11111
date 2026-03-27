@@ -25,6 +25,7 @@ jobs:
       should_update: ${{ steps.versions.outputs.should_update }}
       new_medusa_version: ${{ steps.versions.outputs.new_medusa_version }}
       current_versions: ${{ steps.versions.outputs.current_versions }}
+      outdated_examples: ${{ steps.versions.outputs.outdated_examples }}
 
     steps:
       - name: Checkout repository
@@ -79,6 +80,32 @@ jobs:
           NODE
           )"
 
+          OUTDATED_EXAMPLES="$(node - "$TARGET_VERSION" <<'NODE'
+          const fs = require('fs')
+          const path = require('path')
+
+          const target = process.argv[2]
+          const examplesDir = path.join(process.cwd(), 'examples')
+          const outdated = []
+
+          for (const entry of fs.readdirSync(examplesDir, { withFileTypes: true })) {
+            if (!entry.isDirectory()) continue
+            const pkgPath = path.join(examplesDir, entry.name, 'medusa', 'package.json')
+            if (!fs.existsSync(pkgPath)) continue
+
+            const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'))
+            const version = pkg.dependencies && pkg.dependencies['@medusajs/medusa']
+            const normalized = version ? version.replace(/^[~^]/, '') : null
+
+            if (!normalized || normalized !== target) {
+              outdated.push(entry.name)
+            }
+          }
+
+          process.stdout.write(outdated.join(','))
+          NODE
+          )"
+
           SHOULD_UPDATE="$(node - "$TARGET_VERSION" "$CURRENT_VERSIONS" <<'NODE'
           const target = process.argv[2]
           const currentCsv = process.argv[3]
@@ -97,10 +124,12 @@ jobs:
           echo "new_medusa_version=$TARGET_VERSION" >> "$GITHUB_OUTPUT"
           echo "current_versions=$CURRENT_VERSIONS" >> "$GITHUB_OUTPUT"
           echo "should_update=$SHOULD_UPDATE" >> "$GITHUB_OUTPUT"
+          echo "outdated_examples=$OUTDATED_EXAMPLES" >> "$GITHUB_OUTPUT"
 
           echo "Current versions: $CURRENT_VERSIONS"
           echo "Target version: $TARGET_VERSION"
           echo "Should update: $SHOULD_UPDATE"
+          echo "Outdated examples: $OUTDATED_EXAMPLES"
 
   update_test_and_pr:
     name: Update Medusa, run tests, create PR
@@ -183,25 +212,27 @@ jobs:
           EOF
 
             # Generate .env.test for integration tests (NODE_ENV=test)
-            # Copy template and fill in DB credentials with Postgres service password
-            if [ -f "${medusa_dir}/.env.template" ]; then
+            # Prefer committed .env.test values; fall back to template if missing.
+            if [ -f "${medusa_dir}/.env.test" ]; then
+              echo "Using committed .env.test for ${medusa_dir}"
+            elif [ -f "${medusa_dir}/.env.template" ]; then
               cat "${medusa_dir}/.env.template" > "${medusa_dir}/.env.test"
-              # Replace $DB_NAME placeholder with actual database name
-              sed -i "s|\$DB_NAME|${db_name}|g" "${medusa_dir}/.env.test"
-              # Update DATABASE_URL to include password
-              sed -i 's|postgres://postgres@localhost/|postgres://postgres:postgres@localhost/|g' "${medusa_dir}/.env.test"
-              
-              # Ensure DB credentials are explicitly set (add only if not present)
-              grep -q "^DB_USERNAME=" "${medusa_dir}/.env.test" || echo "DB_USERNAME=postgres" >> "${medusa_dir}/.env.test"
-              grep -q "^DB_PASSWORD=" "${medusa_dir}/.env.test" || echo "DB_PASSWORD=postgres" >> "${medusa_dir}/.env.test"
-              grep -q "^DB_NAME=" "${medusa_dir}/.env.test" || echo "DB_NAME=${db_name}" >> "${medusa_dir}/.env.test"
-              
-              # Replace existing DB_PASSWORD if empty
-              sed -i 's/^DB_PASSWORD=$/DB_PASSWORD=postgres/' "${medusa_dir}/.env.test"
+            else
+              echo "No .env.test or .env.template found for ${medusa_dir}, skipping"
+              continue
             fi
+
+            # Normalize DB fields for CI postgres service.
+            sed -i "s|\$DB_NAME|${db_name}|g" "${medusa_dir}/.env.test"
+            sed -i 's|postgres://postgres@localhost/|postgres://postgres:postgres@localhost/|g' "${medusa_dir}/.env.test"
+            grep -q "^DB_USERNAME=" "${medusa_dir}/.env.test" || echo "DB_USERNAME=postgres" >> "${medusa_dir}/.env.test"
+            grep -q "^DB_PASSWORD=" "${medusa_dir}/.env.test" || echo "DB_PASSWORD=postgres" >> "${medusa_dir}/.env.test"
+            grep -q "^DB_NAME=" "${medusa_dir}/.env.test" || echo "DB_NAME=${db_name}" >> "${medusa_dir}/.env.test"
+            sed -i 's/^DB_USERNAME=$/DB_USERNAME=postgres/' "${medusa_dir}/.env.test"
+            sed -i 's/^DB_PASSWORD=$/DB_PASSWORD=postgres/' "${medusa_dir}/.env.test"
           done
 
-      - name: Run update script from repository root
+      - name: Run update script only for outdated examples
         shell: bash
         env:
           DB_USERNAME: postgres
@@ -215,7 +246,21 @@ jobs:
         run: |
           set -euo pipefail
           chmod +x ./scripts/update.sh
-          corepack yarn update "${{ needs.check_medusa_version.outputs.new_medusa_version }}"
+
+          TARGET_VERSION="${{ needs.check_medusa_version.outputs.new_medusa_version }}"
+          OUTDATED_EXAMPLES="${{ needs.check_medusa_version.outputs.outdated_examples }}"
+
+          if [ -z "$OUTDATED_EXAMPLES" ]; then
+            echo "No outdated examples list returned; skipping update step."
+            exit 0
+          fi
+
+          IFS=',' read -ra EXAMPLES <<< "$OUTDATED_EXAMPLES"
+          for example in "${EXAMPLES[@]}"; do
+            [ -z "$example" ] && continue
+            echo "Updating example: $example"
+            ./scripts/update.sh "$TARGET_VERSION" "$example" --single
+          done
 
       - name: Build all Medusa plugin packages
         shell: bash
@@ -239,10 +284,11 @@ jobs:
 
             - Previous Medusa versions in repo: ${{ needs.check_medusa_version.outputs.current_versions }}
             - Updated to: ${{ needs.check_medusa_version.outputs.new_medusa_version }}
+            - Updated examples only: ${{ needs.check_medusa_version.outputs.outdated_examples }}
             - Steps executed:
               - Postgres DB preparation for examples
-              - `yarn update <version>` from repository root
-              - Build + integration tests in examples via update script
+              - `./scripts/update.sh <version> <example> --single` for outdated examples only
+              - Build + integration tests only for outdated examples
               - Build of all plugin packages in `packages/`
           branch: chore/medusa-update-v${{ needs.check_medusa_version.outputs.new_medusa_version }}
           delete-branch: true
