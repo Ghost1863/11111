@@ -27,6 +27,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Generate GitHub App token
+        id: app-token
+        if: ${{ secrets.GH_APP_ID != '' && secrets.GH_APP_PRIVATE_KEY != '' }}
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.GH_APP_ID }}
+          private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -35,6 +43,9 @@ jobs:
       - name: Resolve version delta
         id: versions
         shell: bash
+        env:
+          GH_API_TOKEN: ${{ steps.app-token.outputs.token }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
 
@@ -92,7 +103,8 @@ jobs:
 
           function hasOpenPrForBranch() {
             return new Promise((resolve) => {
-              if (!owner || !repo || !process.env.GITHUB_TOKEN) {
+              const apiToken = process.env.GH_API_TOKEN || process.env.GITHUB_TOKEN
+              if (!owner || !repo || !apiToken) {
                 resolve(false)
                 return
               }
@@ -104,7 +116,7 @@ jobs:
                 method: 'GET',
                 headers: {
                   'User-Agent': 'medusa-daily-version-update',
-                  'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`,
+                  'Authorization': `Bearer ${apiToken}`,
                   'Accept': 'application/vnd.github+json',
                 },
               }
