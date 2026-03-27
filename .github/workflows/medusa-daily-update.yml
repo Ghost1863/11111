@@ -190,10 +190,14 @@ jobs:
               sed -i "s|\$DB_NAME|${db_name}|g" "${medusa_dir}/.env.test"
               # Update DATABASE_URL to include password
               sed -i 's|postgres://postgres@localhost/|postgres://postgres:postgres@localhost/|g' "${medusa_dir}/.env.test"
-              # Ensure DB credentials are set explicitly
-              sed -i 's/^DB_USERNAME=.*/DB_USERNAME=postgres/' "${medusa_dir}/.env.test" || echo "DB_USERNAME=postgres" >> "${medusa_dir}/.env.test"
-              sed -i 's/^DB_PASSWORD=.*/DB_PASSWORD=postgres/' "${medusa_dir}/.env.test" || echo "DB_PASSWORD=postgres" >> "${medusa_dir}/.env.test"
-              sed -i "s/^DB_NAME=.*/DB_NAME=${db_name}/" "${medusa_dir}/.env.test"
+              
+              # Ensure DB credentials are explicitly set (add only if not present)
+              grep -q "^DB_USERNAME=" "${medusa_dir}/.env.test" || echo "DB_USERNAME=postgres" >> "${medusa_dir}/.env.test"
+              grep -q "^DB_PASSWORD=" "${medusa_dir}/.env.test" || echo "DB_PASSWORD=postgres" >> "${medusa_dir}/.env.test"
+              grep -q "^DB_NAME=" "${medusa_dir}/.env.test" || echo "DB_NAME=${db_name}" >> "${medusa_dir}/.env.test"
+              
+              # Replace existing DB_PASSWORD if empty
+              sed -i 's/^DB_PASSWORD=$/DB_PASSWORD=postgres/' "${medusa_dir}/.env.test"
             fi
           done
 
