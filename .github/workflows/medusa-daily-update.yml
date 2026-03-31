@@ -251,7 +251,6 @@ jobs:
               psql "postgresql://postgres:postgres@localhost:5432/postgres" -c "CREATE DATABASE \"${db_name}\";"
             fi
 
-            cp "$test_env" "${medusa_dir}/.env"
           done
 
       - name: Run update script only for outdated examples
@@ -267,7 +266,7 @@ jobs:
           for example in "${EXAMPLES[@]}"; do
             [ -z "$example" ] && continue
             echo "Updating example: $example"
-            ./scripts/update.sh "$TARGET_VERSION" "$example" --single
+            ./scripts/update.sh "$TARGET_VERSION" "$example" --single --skip-build
           done
 
       - name: Generate GitHub App token for PR
