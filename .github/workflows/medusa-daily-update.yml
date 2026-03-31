@@ -212,46 +212,46 @@ jobs:
       - name: Install root dependencies
         run: corepack yarn install --immutable
 
-      - name: Prepare Postgres databases and .env files for examples
-        shell: bash
-        run: |
-          set -euo pipefail
+      # - name: Prepare Postgres databases and .env files for examples
+      #   shell: bash
+      #   run: |
+      #     set -euo pipefail
 
-          OUTDATED_EXAMPLES="${{ needs.check_medusa_version.outputs.outdated_examples }}"
-          if [ -z "$OUTDATED_EXAMPLES" ]; then
-            echo "No outdated examples list returned; skipping env/db preparation."
-            exit 0
-          fi
+      #     OUTDATED_EXAMPLES="${{ needs.check_medusa_version.outputs.outdated_examples }}"
+      #     if [ -z "$OUTDATED_EXAMPLES" ]; then
+      #       echo "No outdated examples list returned; skipping env/db preparation."
+      #       exit 0
+      #     fi
 
-          IFS=',' read -ra EXAMPLES <<< "$OUTDATED_EXAMPLES"
-          for example in "${EXAMPLES[@]}"; do
-            [ -z "$example" ] && continue
+      #     IFS=',' read -ra EXAMPLES <<< "$OUTDATED_EXAMPLES"
+      #     for example in "${EXAMPLES[@]}"; do
+      #       [ -z "$example" ] && continue
 
-            medusa_dir="examples/${example}/medusa"
-            test_env="${medusa_dir}/.env.test"
+      #       medusa_dir="examples/${example}/medusa"
+      #       test_env="${medusa_dir}/.env.test"
 
-            if [ ! -d "${medusa_dir}" ]; then
-              echo "Directory ${medusa_dir} not found, skipping"
-              continue
-            fi
+      #       if [ ! -d "${medusa_dir}" ]; then
+      #         echo "Directory ${medusa_dir} not found, skipping"
+      #         continue
+      #       fi
 
-            if [ ! -f "$test_env" ]; then
-              echo "No .env.test found for ${medusa_dir}"
-              exit 1
-            fi
+      #       if [ ! -f "$test_env" ]; then
+      #         echo "No .env.test found for ${medusa_dir}"
+      #         exit 1
+      #       fi
 
-            db_name="$(grep -E '^DB_NAME=' "$test_env" | head -n 1 | cut -d= -f2-)"
-            if [ -z "$db_name" ]; then
-              echo "DB_NAME is missing in ${test_env}"
-              exit 1
-            fi
+      #       db_name="$(grep -E '^DB_NAME=' "$test_env" | head -n 1 | cut -d= -f2-)"
+      #       if [ -z "$db_name" ]; then
+      #         echo "DB_NAME is missing in ${test_env}"
+      #         exit 1
+      #       fi
 
-            exists=$(psql "postgresql://postgres:postgres@localhost:5432/postgres" -tAc "SELECT 1 FROM pg_database WHERE datname='${db_name}'")
-            if [ "$exists" != "1" ]; then
-              psql "postgresql://postgres:postgres@localhost:5432/postgres" -c "CREATE DATABASE \"${db_name}\";"
-            fi
+      #       exists=$(psql "postgresql://postgres:postgres@localhost:5432/postgres" -tAc "SELECT 1 FROM pg_database WHERE datname='${db_name}'")
+      #       if [ "$exists" != "1" ]; then
+      #         psql "postgresql://postgres:postgres@localhost:5432/postgres" -c "CREATE DATABASE \"${db_name}\";"
+      #       fi
 
-          done
+      #     done
 
       - name: Run update script only for outdated examples
         shell: bash
