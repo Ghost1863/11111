@@ -11,5 +11,6 @@
     "js-yaml": "^4.1.0",
     "npm-registry-fetch": "^13.0.1"
   },
-  "packageManager": "yarn@4.9.2"
+  "packageManager": "yarn@4.9.2",
+  "private": true
 }
