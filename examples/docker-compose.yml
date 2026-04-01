@@ -6,9 +6,10 @@ services:
     ports:
       - 5432:5432
     volumes:
-     - pgdata:/var/lib/postgresql/data
+     - pgdata:/var/lib/postgresql
     environment:
       POSTGRES_USER: postgres # Default user for PostgreSQL
+      POSTGRES_PASSWORD: postgres # Password for PostgreSQL
       POSTGRES_HOST_AUTH_METHOD: trust # Allow connections without a password
     configs:
       # This configuration file is used to initialize the database with necessary databases
