@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'packages/**'
+    # paths:
+    #   - 'packages/**'
 
 jobs:
   release:
@@ -23,7 +23,7 @@ jobs:
       
       - name: Enable Corepack
         run: corepack enable
-        
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
