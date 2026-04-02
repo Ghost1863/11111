@@ -2,6 +2,7 @@
   "name": "@gorgo/medusa-payment-robokassa",
   "version": "0.2.12",
   "description": "Robokassa payment provider for Medusa",
+  "private": true,
   "files": [
     ".medusa/server"
   ],

@@ -2,6 +2,7 @@
 	"name": "@gorgo/medusa-1c",
 	"version": "0.0.16",
 	"description": "Medusa plugin for integration with 1C:Enterprise",
+	"private": true,
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/gorgojs/medusa-plugins",
