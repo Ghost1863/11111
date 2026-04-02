@@ -1,5 +1,5 @@
 {
-  "name": "@gorgo/test-plugin",
+  "name": "@immortal1864/test-plugin",
   "version": "0.0.1",
   "description": "Test plugin for release workflow",
   "main": "src/index.js",
