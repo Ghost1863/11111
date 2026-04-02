@@ -3905,6 +3905,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@immortal1864/test-plugin@workspace:packages/test":
+  version: 0.0.0-use.local
+  resolution: "@immortal1864/test-plugin@workspace:packages/test"
+  languageName: unknown
+  linkType: soft
+
 "@inquirer/checkbox@npm:^2.3.11":
   version: 2.5.0
   resolution: "@inquirer/checkbox@npm:2.5.0"
