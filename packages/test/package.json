@@ -17,8 +17,5 @@
     "url": "https://github.com/gorgojs/medusa-plugins.git",
     "directory": "packages/test"
   },
-  "packageManager": "yarn@4.9.2",
-  "dependencies": {
-    "@immortal1864/test-plugin": "^0.0.1"
-  }
+  "packageManager": "yarn@4.9.2"
 }
