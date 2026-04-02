@@ -5,8 +5,10 @@ __metadata:
   version: 8
   cacheKey: 10c0
 
-"@immortal1864/test-plugin@workspace:.":
+"@immortal1864/test-plugin@npm:^0.0.1, @immortal1864/test-plugin@workspace:.":
   version: 0.0.0-use.local
   resolution: "@immortal1864/test-plugin@workspace:."
+  dependencies:
+    "@immortal1864/test-plugin": "npm:^0.0.1"
   languageName: unknown
   linkType: soft
