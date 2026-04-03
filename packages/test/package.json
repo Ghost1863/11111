@@ -20,6 +20,6 @@
   "packageManager": "yarn@4.9.2",
   "publishConfig": {
     "access": "public",
-    "registry": "https://registry.npmjs.org/"
+    "provenance" : true
   }
 }
