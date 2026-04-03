@@ -1,6 +1,6 @@
 {
   "name": "@immortal1864/test-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Test plugin for release workflow",
   "main": "src/index.js",
   "type": "module",
@@ -20,6 +20,6 @@
   "packageManager": "yarn@4.9.2",
   "publishConfig": {
     "access": "public",
-    "provenance" : true
+    "provenance": true
   }
 }
