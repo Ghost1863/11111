@@ -1,5 +1,11 @@
 # @immortal1864/test-plugin
 
+## 1.0.1
+
+### Patch Changes
+
+- [`eb4ce9d`](https://github.com/Ghost1863/11111/commit/eb4ce9d1dd1adc8d0488a9b9641e8523f1520eac) Thanks [@Ghost1863](https://github.com/Ghost1863)! - test1
+
 ## 1.0.0
 
 ### Major Changes
