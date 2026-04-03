@@ -17,5 +17,8 @@
     "url": "https://github.com/Ghost1863/11111.git",
     "directory": "packages/test"
   },
-  "packageManager": "yarn@4.9.2"
+  "packageManager": "yarn@4.9.2",
+  "publishConfig": {
+    "access": "public"
+  }
 }
