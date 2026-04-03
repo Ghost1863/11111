@@ -4,6 +4,12 @@
 
 ### Patch Changes
 
+- [`6faafb0`](https://github.com/Ghost1863/11111/commit/6faafb0eeeffb45f8e291102d608c3beb8c5b01d) Thanks [@Ghost1863](https://github.com/Ghost1863)! - test3
+
+## 1.0.1
+
+### Patch Changes
+
 - [`b67e30a`](https://github.com/Ghost1863/11111/commit/b67e30aa068c9a0138636366a94dfde765ea444b) Thanks [@Ghost1863](https://github.com/Ghost1863)! - test
 
 - [`8f3576f`](https://github.com/Ghost1863/11111/commit/8f3576fa3611c81c1b9d05bb9a455a50f34709c3) Thanks [@Ghost1863](https://github.com/Ghost1863)! - test2
