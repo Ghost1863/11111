@@ -1,13 +1,9 @@
 name: Release Plugins
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
-    paths:
-      - .changeset/**
-    #  - 'packages/**'
 
 jobs:
   release:
@@ -37,14 +33,27 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
+      - name: Check changeset status
+        id: changeset-status
+        run: |
+          set -euo pipefail
+
+          yarn changeset status --output /tmp/changeset-status.json
+
+          should_release=$(node -e "const fs=require('fs'); const status=JSON.parse(fs.readFileSync('/tmp/changeset-status.json', 'utf8')); process.stdout.write(Array.isArray(status.releases) && status.releases.length > 0 ? 'true' : 'false')")
+
+          echo "should_release=$should_release" >> "$GITHUB_OUTPUT"
+
       - name: Generate GitHub App token
         id: app-token
+        if: steps.changeset-status.outputs.should_release == 'true'
         uses: actions/create-github-app-token@v1
         with:
           app-id: ${{ secrets.GH_APP_ID }}
           private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
           
       - name: Version and publish packages
+        if: steps.changeset-status.outputs.should_release == 'true'
         uses: changesets/action@v1
         with:
           version: yarn changeset version
