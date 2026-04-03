@@ -4,13 +4,15 @@ on:
   push:
     branches:
       - main
-    # paths:
-    #   - 'packages/**'
+    paths:
+      - .changeset/**
+    #  - 'packages/**'
 
 jobs:
   release:
     runs-on: ubuntu-latest
     permissions:
+      id-token: write  # Required for OIDC
       contents: write
       pull-requests: write
     concurrency:
@@ -48,4 +50,3 @@ jobs:
           commit: 'chore: release packages'
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
