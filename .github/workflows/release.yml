@@ -37,6 +37,11 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
+      - name: Configure git author as the pusher
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
+
       - name: Generate changesets from conventional commits
         run: node scripts/generate-changesets.mjs
 
