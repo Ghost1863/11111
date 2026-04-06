@@ -9,7 +9,7 @@ const PACKAGE_SCOPES = [
 ];
 
 // Top-level scopes not tied to a specific package
-const REPO_SCOPES = ['deps', 'ci', 'release', 'docs', 'root'];
+const REPO_SCOPES = ['deps', 'release', 'docs', 'root'];
 
 module.exports = {
   extends: ['@commitlint/config-conventional'],
@@ -19,3 +19,5 @@ module.exports = {
     'header-max-length': [2, 'always', 100],
   },
 };
+
+
