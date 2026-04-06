@@ -53,8 +53,9 @@ function getLastTag() {
 
 function getCommitsSince(ref) {
   const range = ref ? `${ref}..HEAD` : 'HEAD'
+  // %H = full hash, %an = author name, %ae = author email, %s = subject, %b = body
   const raw = execSync(
-    `git log ${range} --format="---COMMIT---%n%H%n%s%n%b%n---END---"`,
+    `git log ${range} --format="---COMMIT---%n%H%n%an%n%ae%n%s%n%b%n---END---"`,
     { encoding: 'utf8' }
   )
   return parseCommits(raw)
@@ -68,7 +69,7 @@ function parseCommits(raw) {
   const blocks = raw.split('---COMMIT---').filter(b => b.includes('---END---'))
   return blocks.map(block => {
     const lines = block.replace('---END---', '').trim().split('\n')
-    const [hash, subject, ...bodyLines] = lines
+    const [hash, authorName, authorEmail, subject, ...bodyLines] = lines
     const body = bodyLines.join('\n').trim()
 
     const match = subject?.match(SUBJECT_RE)
@@ -82,6 +83,8 @@ function parseCommits(raw) {
 
     return {
       hash: hash?.trim(),
+      authorName: authorName?.trim(),
+      authorEmail: authorEmail?.trim(),
       type: type?.trim(),
       scope: scope?.trim() ?? null,
       desc: desc?.trim(),
@@ -101,10 +104,25 @@ function resolveBump(commit) {
 
 // ─── Changeset writer ─────────────────────────────────────────────────────────
 
+/** Derives a GitHub username from the author email (works for noreply GitHub emails). */
+function resolveGithubHandle(authorEmail) {
+  // GitHub noreply format: 12345678+username@users.noreply.github.com
+  const noreplyMatch = authorEmail?.match(/^\d+\+([^@]+)@users\.noreply\.github\.com$/)
+  if (noreplyMatch) return noreplyMatch[1]
+  return null
+}
+
 function buildChangesetContent(packageName, bump, commit) {
   const lines = ['---', `"${packageName}": ${bump}`, '---', '']
 
-  lines.push(commit.desc)
+  // Attribution line: "3fba154 Thanks @Ghost1863! - description"
+  const shortHash = commit.hash?.slice(0, 7) ?? ''
+  const handle = resolveGithubHandle(commit.authorEmail)
+  const attribution = handle
+    ? `${shortHash} Thanks @${handle}! - ${commit.desc}`
+    : `${shortHash} Thanks ${commit.authorName}! - ${commit.desc}`
+
+  lines.push(attribution)
 
   if (commit.body) {
     lines.push('', commit.body)
