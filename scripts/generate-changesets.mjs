@@ -14,7 +14,7 @@
 
 import { execSync } from 'node:child_process'
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
-import { randomBytes } from 'node:crypto'
+
 import path from 'node:path'
 
 // ─── Config ───────────────────────────────────────────────────────────────────
@@ -103,15 +103,14 @@ function parseCommits(raw) {
 
 // ─── Deduplication ────────────────────────────────────────────────────────────
 
-/** Collects short hashes from existing auto-*.md to skip already-processed commits. */
+/** Collects short hashes from auto-<hash>.md filenames to skip already-processed commits. */
 function getProcessedHashes() {
   const hashes = new Set()
   if (!existsSync(CHANGESET_DIR)) return hashes
 
   for (const file of readdirSync(CHANGESET_DIR)) {
-    if (!file.startsWith('auto-') || !file.endsWith('.md')) continue
-    const content = readFileSync(path.join(CHANGESET_DIR, file), 'utf8')
-    const match = content.match(/^<!-- ([0-9a-f]{7}) -->$/m)
+    // filename format: auto-<7-char-hash>.md
+    const match = file.match(/^auto-([0-9a-f]{7})\.md$/)
     if (match) hashes.add(match[1])
   }
   return hashes
@@ -129,9 +128,7 @@ function buildContent(packageName, bump, commit) {
   const lines = ['---', `"${packageName}": ${bump}`, '---', '']
 
   // "commit:" is a changelog-github directive → resolves to [`abc1234`](url) Thanks @user!
-  // "<!-- hash -->" is used only for deduplication by this script
   lines.push(`commit: ${commit.hash}`)
-  lines.push(`<!-- ${shortHash} -->`)
   lines.push(commit.desc)
 
   if (commit.body)         lines.push('', commit.body)
@@ -141,7 +138,9 @@ function buildContent(packageName, bump, commit) {
 }
 
 function writeChangeset(packageName, bump, commit) {
-  const filename = path.join(CHANGESET_DIR, `auto-${randomBytes(4).toString('hex')}.md`)
+  // filename encodes the short hash — used for deduplication on re-runs
+  const shortHash = commit.hash?.slice(0, 7) ?? randomBytes(4).toString('hex')
+  const filename = path.join(CHANGESET_DIR, `auto-${shortHash}.md`)
   writeFileSync(filename, buildContent(packageName, bump, commit), 'utf8')
   console.log(`  ✔ ${filename}  [${packageName}: ${bump}]`)
 }
