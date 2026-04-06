@@ -1,5 +1,4 @@
-# @go
-### Patch Changesrgo/medusa-1c
+# @gorgo/medusa-1c
 
 ## 0.0.16
 
