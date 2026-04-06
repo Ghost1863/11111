@@ -125,13 +125,16 @@ function resolveBump(commit) {
 }
 
 function buildContent(packageName, bump, commit) {
+  const shortHash = commit.hash?.slice(0, 7) ?? ''
   const lines = ['---', `"${packageName}": ${bump}`, '---', '']
 
-  // short hash comment — used only for deduplication, ignored by changeset tooling
-  lines.push(`<!-- ${commit.hash?.slice(0, 7)} -->`)
+  // "commit:" is a changelog-github directive → resolves to [`abc1234`](url) Thanks @user!
+  // "<!-- hash -->" is used only for deduplication by this script
+  lines.push(`commit: ${commit.hash}`)
+  lines.push(`<!-- ${shortHash} -->`)
   lines.push(commit.desc)
 
-  if (commit.body)        lines.push('', commit.body)
+  if (commit.body)         lines.push('', commit.body)
   if (commit.breakingNote) lines.push('', `BREAKING CHANGE: ${commit.breakingNote}`)
 
   return lines.join('\n') + '\n'
