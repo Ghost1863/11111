@@ -100,7 +100,7 @@ function getProcessedHashes() {
   const hashes = new Set();
   if (!existsSync(CHANGESET_DIR)) return hashes;
   for (const file of readdirSync(CHANGESET_DIR)) {
-    const m = file.match(/^auto-([0-9a-f]{7})\.md$/);
+    const m = file.match(/^auto-([0-9]+)-([0-9a-f]{7})\.md$/);
     if (m) hashes.add(m[1]);
   }
   return hashes;
@@ -122,14 +122,14 @@ function main() {
 
   let generated = 0;
 
-  for (const commit of commits) {
+  commits.forEach((commit, i) => {
     const shortHash = commit.hash?.slice(0, 7) ?? "";
-    if (processed.has(shortHash)) continue;
+    if (processed.has(shortHash)) return;
 
     const bump = commit.isBreaking
       ? "major"
       : BUMP_BY_TYPE[commit.type] ?? null;
-    if (!bump) continue;
+    if (!bump) return;
 
     const packageNames = [];
     if (commit.scopes) {
@@ -156,13 +156,13 @@ function main() {
       "",
     ].join("\n");
 
-    const filename = path.join(CHANGESET_DIR, `auto-${shortHash}.md`);
+    const filename = path.join(CHANGESET_DIR, `auto-${i}-${shortHash}.md`);
     writeFileSync(filename, content, "utf8");
     packageNames.forEach((name) => {
       console.log(`  ✔ ${filename} [${name}: ${bump}]`);
     });
     generated++;
-  }
+  });
 
   console.log(`Generated ${generated} changeset(s).`);
 }
