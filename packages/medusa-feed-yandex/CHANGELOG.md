@@ -1,5 +1,11 @@
 # @gorgo/medusa-feed-yandex
 
+## 0.2.20
+
+### Patch Changes
+
+- [`13b6d00`](https://github.com/Ghost1863/11111/commit/13b6d00cc214eaa5f9f2c0786839d31e7a4c2033) Thanks [@Ghost1863](https://github.com/Ghost1863)! - 11111
+
 ## 0.2.19
 
 ### Patch Changes
