@@ -11,9 +11,9 @@ jobs:
   release:
     runs-on: ubuntu-latest
     permissions:
-      id-token: write  # Required for OIDC
+      id-token: write
       contents: write
-      issues : write
+      issues: write
       pull-requests: write
     concurrency:
       group: release-plugins-${{ github.ref }}
@@ -23,7 +23,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # full history needed for git log in generate-changesets
+          fetch-depth: 0
 
       - name: Enable Corepack
         run: corepack enable
@@ -36,11 +36,6 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --immutable
-
-      - name: Configure git author as the pusher
-        run: |
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
 
       - name: Generate changesets from conventional commits
         run: node scripts/generate-changesets.mjs

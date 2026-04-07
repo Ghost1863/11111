@@ -1,34 +1,7 @@
 #!/usr/bin/env node
-/**
- * Generates .changeset/*.md files from conventional commits since the last release.
- *
- * Commit format:  type(scope): description
- * Breaking:       type(scope)!: description  OR  footer "BREAKING CHANGE: ..."
- *
- * Bump rules:
- *   BREAKING CHANGE / !   → major
- *   feat                  → minor
- *   fix | perf | refactor → patch
- *   everything else       → skipped
- */
-
 import { execSync } from 'node:child_process'
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
-
 import path from 'node:path'
-
-// ─── Config ───────────────────────────────────────────────────────────────────
-
-const SCOPE_TO_PACKAGE = {
-  '1c':                  '@gorgo/medusa-1c',
-  'feed-yandex':         '@gorgo/medusa-feed-yandex',
-  'fulfillment-apiship': '@gorgo/medusa-fulfillment-apiship',
-  'payment-robokassa':   '@gorgo/medusa-payment-robokassa',
-  'payment-tkassa':      '@gorgo/medusa-payment-tkassa',
-  'scrapper':            'plugin-scraper',
-  'site':                'site',
-  'test':                '@immortal1864/test-plugin',
-}
 
 const BUMP_BY_TYPE = {
   feat:     'minor',
@@ -38,10 +11,27 @@ const BUMP_BY_TYPE = {
 }
 
 const CHANGESET_DIR = path.resolve('.changeset')
+const SUBJECT_RE = /^(?<type>\w+)(?:\((?<scope>[^)]+)\))?(?<breaking>!)?:\s*(?<desc>.+)$/
 
-// ─── Git ──────────────────────────────────────────────────────────────────────
+function loadScopeToPackage() {
+  const map = {}
+  const packagesDir = path.resolve('packages')
+  if (!existsSync(packagesDir)) return map
 
-/** Returns the ref to start git log from (last release commit or last tag). */
+  for (const dir of readdirSync(packagesDir, { withFileTypes: true })) {
+    if (!dir.isDirectory()) continue
+    const pkgPath = path.join(packagesDir, dir.name, 'package.json')
+    if (!existsSync(pkgPath)) continue
+
+    const { name } = JSON.parse(readFileSync(pkgPath, 'utf8'))
+    if (!name) continue
+
+    const scope = dir.name.replace(/^medusa-/, '')
+    map[scope] = name
+  }
+  return map
+}
+
 function getBaseRef() {
   try {
     const hash = execSync(
@@ -49,11 +39,11 @@ function getBaseRef() {
       { encoding: 'utf8' }
     ).trim()
     if (hash) return hash
-  } catch { /* ignore */ }
+  } catch {}
 
   try {
     return execSync('git describe --tags --abbrev=0', { encoding: 'utf8' }).trim()
-  } catch { /* ignore */ }
+  } catch {}
 
   return null
 }
@@ -64,14 +54,6 @@ function getCommitsSince(ref) {
     `git log ${range} --format="---COMMIT---%n%H%n%s%n%b%n---END---"`,
     { encoding: 'utf8' }
   )
-  return parseCommits(raw)
-}
-
-// ─── Parsing ──────────────────────────────────────────────────────────────────
-
-const SUBJECT_RE = /^(?<type>\w+)(?:\((?<scope>[^)]+)\))?(?<breaking>!)?:\s*(?<desc>.+)$/
-
-function parseCommits(raw) {
   return raw
     .split('---COMMIT---')
     .filter(b => b.includes('---END---'))
@@ -79,7 +61,6 @@ function parseCommits(raw) {
       const lines = block.replace('---END---', '').trim().split('\n')
       const [hash, subject, ...bodyLines] = lines
       const body = bodyLines.join('\n').trim()
-
       const match = subject?.match(SUBJECT_RE)
       if (!match) return null
 
@@ -87,103 +68,72 @@ function parseCommits(raw) {
       const hasBreakingFooter = /^BREAKING CHANGE:/m.test(body)
 
       return {
-        hash:        hash?.trim(),
-        type:        type?.trim(),
-        scope:       scope?.trim() ?? null,
-        desc:        desc?.trim(),
-        body:        body || null,
-        isBreaking:  !!breaking || hasBreakingFooter,
-        breakingNote: hasBreakingFooter
-          ? body.match(/^BREAKING CHANGE:\s*(.+)/m)?.[1]
-          : null,
+        hash:         hash?.trim(),
+        type:         type?.trim(),
+        scope:        scope?.trim() ?? null,
+        desc:         desc?.trim(),
+        body:         body || null,
+        isBreaking:   !!breaking || hasBreakingFooter,
+        breakingNote: hasBreakingFooter ? body.match(/^BREAKING CHANGE:\s*(.+)/m)?.[1] : null,
       }
     })
     .filter(Boolean)
 }
 
-// ─── Deduplication ────────────────────────────────────────────────────────────
-
-/** Collects short hashes from auto-<hash>.md filenames to skip already-processed commits. */
 function getProcessedHashes() {
   const hashes = new Set()
   if (!existsSync(CHANGESET_DIR)) return hashes
-
   for (const file of readdirSync(CHANGESET_DIR)) {
-    // filename format: auto-<7-char-hash>.md
-    const match = file.match(/^auto-([0-9a-f]{7})\.md$/)
-    if (match) hashes.add(match[1])
+    const m = file.match(/^auto-([0-9a-f]{7})\.md$/)
+    if (m) hashes.add(m[1])
   }
   return hashes
 }
 
-// ─── Writer ───────────────────────────────────────────────────────────────────
-
-function resolveBump(commit) {
-  if (commit.isBreaking) return 'major'
-  return BUMP_BY_TYPE[commit.type] ?? null
-}
-
-function buildContent(packageName, bump, commit) {
-  const shortHash = commit.hash?.slice(0, 7) ?? ''
-  const lines = ['---', `"${packageName}": ${bump}`, '---', '']
-
-  // "commit:" is a changelog-github directive → resolves to [`abc1234`](url) Thanks @user!
-  lines.push(`commit: ${commit.hash}`)
-  lines.push(commit.desc)
-
-  if (commit.body)         lines.push('', commit.body)
-  if (commit.breakingNote) lines.push('', `BREAKING CHANGE: ${commit.breakingNote}`)
-
-  return lines.join('\n') + '\n'
-}
-
-function writeChangeset(packageName, bump, commit) {
-  // filename encodes the short hash — used for deduplication on re-runs
-  const shortHash = commit.hash?.slice(0, 7) ?? randomBytes(4).toString('hex')
-  const filename = path.join(CHANGESET_DIR, `auto-${shortHash}.md`)
-  writeFileSync(filename, buildContent(packageName, bump, commit), 'utf8')
-  console.log(`  ✔ ${filename}  [${packageName}: ${bump}]`)
-}
-
-// ─── Main ─────────────────────────────────────────────────────────────────────
-
 function main() {
   if (!existsSync(CHANGESET_DIR)) mkdirSync(CHANGESET_DIR, { recursive: true })
 
+  const scopeToPackage = loadScopeToPackage()
   const baseRef = getBaseRef()
-  console.log(`\nGenerating changesets since: ${baseRef ?? '(beginning of history)'}`)
-
   const commits = getCommitsSince(baseRef)
   const processed = getProcessedHashes()
-  console.log(`Commits: ${commits.length}, already processed: ${processed.size}\n`)
+
+  console.log(`Base: ${baseRef ?? '(all history)'}, commits: ${commits.length}, processed: ${processed.size}`)
 
   let generated = 0
 
   for (const commit of commits) {
     const shortHash = commit.hash?.slice(0, 7) ?? ''
+    if (processed.has(shortHash)) continue
 
-    if (processed.has(shortHash)) {
-      console.log(`  – dup   ${shortHash}  ${commit.desc}`)
-      continue
-    }
+    const bump = commit.isBreaking ? 'major' : (BUMP_BY_TYPE[commit.type] ?? null)
+    if (!bump) continue
 
-    const bump = resolveBump(commit)
-    if (!bump) {
-      console.log(`  – skip  [${commit.type}]  ${commit.desc}`)
-      continue
-    }
-
-    const packageName = commit.scope ? SCOPE_TO_PACKAGE[commit.scope] : null
+    const packageName = commit.scope ? scopeToPackage[commit.scope] : null
     if (!packageName) {
-      console.log(`  – skip  unknown scope "${commit.scope}"  ${commit.desc}`)
+      console.log(`  skip: unknown scope "${commit.scope}" — ${commit.desc}`)
       continue
     }
 
-    writeChangeset(packageName, bump, commit)
+    const content = [
+      '---',
+      `"${packageName}": ${bump}`,
+      '---',
+      '',
+      `commit: ${commit.hash}`,
+      commit.desc,
+      ...(commit.body ? ['', commit.body] : []),
+      ...(commit.breakingNote ? ['', `BREAKING CHANGE: ${commit.breakingNote}`] : []),
+      '',
+    ].join('\n')
+
+    const filename = path.join(CHANGESET_DIR, `auto-${shortHash}.md`)
+    writeFileSync(filename, content, 'utf8')
+    console.log(`  ✔ ${filename} [${packageName}: ${bump}]`)
     generated++
   }
 
-  console.log(`\nDone. Generated ${generated} changeset file(s).`)
+  console.log(`Generated ${generated} changeset(s).`)
 }
 
 main()
