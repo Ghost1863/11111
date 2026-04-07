@@ -80,11 +80,11 @@ function getCommitsSince(ref) {
 
       const { type, scope, breaking, desc } = match.groups;
       const hasBreakingFooter = /^BREAKING CHANGE:/m.test(body);
-      console.log(scope);
+      const scopes = scope.split(",").map((s) => s.trim());
       return {
         hash: hash?.trim(),
         type: type?.trim(),
-        scope: scope?.trim() ?? null,
+        scopes: scopes ?? null,
         desc: desc?.trim(),
         body: body || null,
         isBreaking: !!breaking || hasBreakingFooter,
@@ -131,15 +131,20 @@ function main() {
       : BUMP_BY_TYPE[commit.type] ?? null;
     if (!bump) continue;
 
-    const packageName = commit.scope ? scopeToPackage[commit.scope] : null;
-    if (!packageName) {
-      console.log(`  skip: unknown scope "${commit.scope}" — ${commit.desc}`);
-      continue;
+    const packageNames = [];
+    if (commit.scopes) {
+      commit.scopes.forEach((scope) => {
+        const packageName = scope ? scopeToPackage[scope] : null;
+        if (!packageName) {
+          console.log(`  skip: unknown scope "${scope}" — ${commit.desc}`);
+        }
+        packageNames.push(packageName);
+      });
     }
 
     const content = [
       "---",
-      `"${packageName}": ${bump}`,
+      ...packageNames.map((name) => `"${name}": ${bump}`),
       "---",
       "",
       `commit: ${commit.hash}`,
@@ -153,7 +158,9 @@ function main() {
 
     const filename = path.join(CHANGESET_DIR, `auto-${shortHash}.md`);
     writeFileSync(filename, content, "utf8");
-    console.log(`  ✔ ${filename} [${packageName}: ${bump}]`);
+    packageNames.forEach((name) => {
+      console.log(`  ✔ ${filename} [${name}: ${bump}]`);
+    });
     generated++;
   }
 
