@@ -57,11 +57,14 @@ jobs:
             const match = content.match(BADGE_REGEX)
             const testedVersion = match ? match[1] : null
 
-            if (testedVersion) {
-              versions.add(testedVersion)
+            if (!testedVersion) {
+              console.log(`Skipping ${entry.name}: no Tested_with_Medusa badge found in README`)
+              continue
             }
 
-            if (!testedVersion || testedVersion !== target) {
+            versions.add(testedVersion)
+
+            if (testedVersion !== target) {
               outdated.push(entry.name)
             }
           }
