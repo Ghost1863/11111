@@ -187,11 +187,13 @@ jobs:
           TARGET_VERSION="${{ needs.check_medusa_version.outputs.new_medusa_version }}"
           OUTDATED_PACKAGES="${{ needs.check_medusa_version.outputs.outdated_packages }}"
 
+          # Strip leading "medusa-" prefix to get the example directory name
           IFS=',' read -ra PACKAGES <<< "$OUTDATED_PACKAGES"
           for package in "${PACKAGES[@]}"; do
             [ -z "$package" ] && continue
-            echo "Updating package: $package"
-            ./scripts/update.sh "$TARGET_VERSION" "$package" --single --skip-build
+            example="${package#medusa-}"
+            echo "Updating example '$example' for package '$package'"
+            ./scripts/update.sh "$TARGET_VERSION" "$example" --single --skip-build
           done
 
       - name: Generate GitHub App token for PR
