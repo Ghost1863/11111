@@ -29,6 +29,26 @@ export default async function seedDemoData({ container }: ExecArgs) {
   const storeModuleService = container.resolve(Modules.STORE);
 
   const countries = ["ru"];
+  type SeedRegion = {
+    id: string;
+    countries?: Array<{ iso_2?: string | null } | null>;
+  };
+
+  const getRegionForCountry = async (countryCode: string) => {
+    const { data: regions } = await query.graph({
+      entity: "region",
+      fields: ["id", "name", "currency_code", "countries.*"],
+    });
+
+    return (
+      (regions as SeedRegion[]).find((region) =>
+        region.countries?.some(
+          (country) =>
+            country?.iso_2?.toLowerCase() === countryCode.toLowerCase()
+        )
+      ) ?? null
+    );
+  };
 
   logger.info("Seeding store data...");
   const [store] = await storeModuleService.listStores();
@@ -67,28 +87,52 @@ export default async function seedDemoData({ container }: ExecArgs) {
     },
   });
   logger.info("Seeding region data...");
-  const { result: regionResult } = await createRegionsWorkflow(container).run({
-    input: {
-      regions: [
-        {
-          name: "Russia",
-          currency_code: "rub",
-          countries,
-          payment_providers: ["pp_system_default", "pp_tkassa_tkassa"],
+  let region: SeedRegion | null = await getRegionForCountry("ru");
+
+  if (!region) {
+    try {
+      const { result: regionResult } = await createRegionsWorkflow(
+        container
+      ).run({
+        input: {
+          regions: [
+            {
+              name: "Russia",
+              currency_code: "rub",
+              countries,
+              payment_providers: ["pp_system_default", "pp_tkassa_tkassa"],
+            },
+          ],
         },
-      ],
-    },
-  });
-  const region = regionResult[0];
+      });
+      region = regionResult[0] as SeedRegion;
+    } catch (error) {
+      region = await getRegionForCountry("ru");
+
+      if (!region) {
+        throw error;
+      }
+
+      logger.warn("Region ru already exists, reusing it for seed data.");
+    }
+  }
   logger.info("Finished seeding regions.");
 
+  if (!region) {
+    throw new Error("Failed to resolve seed region for country ru");
+  }
+
   logger.info("Seeding tax regions...");
-  await createTaxRegionsWorkflow(container).run({
-    input: countries.map((country_code) => ({
-      country_code,
-      provider_id: "tp_system"
-    })),
-  });
+  try {
+    await createTaxRegionsWorkflow(container).run({
+      input: countries.map((country_code) => ({
+        country_code,
+        provider_id: "tp_system",
+      })),
+    });
+  } catch (error) {
+    logger.warn("Tax regions already exist or are partially seeded, skipping.");
+  }
   logger.info("Finished seeding tax regions.");
 
   logger.info("Seeding stock location data...");

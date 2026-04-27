@@ -15,7 +15,7 @@
   "scripts": {
     "build": "medusa build",
     "db:migrate": "medusa db:migrate",
-    "dev": "yarn predev && yarn && medusa develop",
+    "dev": "yarn predev && yarn && yarn db:migrate && medusa develop",
     "dev:tunnel": "concurrently \"yarn dev\" \"yarn tunnel\"",
     "predev": "medusa plugin:add @gorgo/medusa-payment-tkassa",
     "seed": "medusa exec ./src/scripts/seed.ts",
